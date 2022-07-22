@@ -1,5 +1,5 @@
 #titreDefilant{
-    margin-top: 25vh;
+    padding-top: 25vh;
     margin-left:10vw;
     width: fit-content;
     height: 10vh;
@@ -16,15 +16,42 @@ h2{
 
 #buttonTry{
     margin: 0 auto;
-    margin-top: 20vh;
+    margin-top: 10vh;
     width: fit-content;
     background-color: var(--primary-color);
     padding:2vw;
     font-size: 1.8em;
     border-radius: 25px;
     cursor: pointer;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
 }
+
+#buttonTry:hover{
+    background-color: var(--secondary-color);
+    color: white;
+   
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
 #buttonTry span{
     font-family: 'Kaushan Script', cursive;
     font-size: 1.2em;
+}
+
+
+#billet{
+    position:absolute;
+    top: 76vh;
+    left: 77vw;
+    width: 100px;
+    z-index: -1;
+}
+#friends{
+    position: absolute;
+    width: 600px;
+    top: 29vw;
+    left: 60vw;
+    transform: rotate(351deg);
+    z-index: -1;
 }

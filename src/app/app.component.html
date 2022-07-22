@@ -1,7 +1,7 @@
 <header>
-  <div id="titre">{{title}}</div>
-  <div id="logReg">
-    <div id="login">Se Connecter</div>
+  <div routerLink="/" id="titre">{{title}}</div>
+  <div *ngIf="[this.user]" id="logReg">
+    <div routerLink="/login" id="login">Se Connecter {{this.user}}</div>
     <div id="register">S'inscrire</div>
   </div>
 </header>
