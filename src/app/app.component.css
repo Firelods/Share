@@ -1,0 +1,46 @@
+header #titre{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 3em;
+    color: var(--primary-color);
+    padding-left: 5vw;
+}
+
+header {
+    padding:1vw;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    height: 7vh;
+}
+
+#logReg{
+    display:flex;
+    margin-right: 15vw;
+}
+
+#logReg div{
+    width:fit-content;
+    padding:1em;
+    font-size: 0.9em;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 1em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#login{
+    background-color: var(--primary-color);
+
+}
+
+#register{
+    background-color: #291B44;
+    color:white;
+}
+
+main{
+    height: 55vh;
+}

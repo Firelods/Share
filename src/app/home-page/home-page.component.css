@@ -1,0 +1,30 @@
+#titreDefilant{
+    margin-top: 25vh;
+    margin-left:10vw;
+    width: fit-content;
+    height: 10vh;
+}
+main h1{
+    font-family: 'Roboto Mono', monospace;
+}
+h2{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 20vw;
+}
+
+#buttonTry{
+    margin: 0 auto;
+    margin-top: 20vh;
+    width: fit-content;
+    background-color: var(--primary-color);
+    padding:2vw;
+    font-size: 1.8em;
+    border-radius: 25px;
+    cursor: pointer;
+}
+#buttonTry span{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 1.2em;
+}
