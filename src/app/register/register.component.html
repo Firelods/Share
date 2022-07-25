@@ -1,0 +1,13 @@
+<div id="loginForm">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>S'inscrire</h2>
+    <div class="divInfos"><label for="username">Utilisateur</label><input type="text" name="username" id="username"
+        formControlName="username" required></div>
+    <div class="divInfos"><label for="email">Email</label><input type="text" name="email" id="email" formControlName="email"></div>
+    <div class="divInfos"><label for="password">Mot de passe</label><input type="text" name="password" id="password"
+        formControlName="password" required></div>
+    <div [@inOutAnimation] class="error" *ngIf="this.errorLogin">Mauvais Mot de passe</div>
+    <!-- <div (click)="onClick()">CLIQUER</div> -->
+    <button [disabled]="!registerForm.valid">Connexion</button>
+  </form>
+</div>

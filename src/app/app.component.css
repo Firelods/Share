@@ -55,3 +55,24 @@ header {
 main{
     height: 64vh;
 }
+
+#account{
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+    width:fit-content;
+    padding:1.5em;
+    font-size: 1.1em;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 1em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--primary-color);
+    margin-right: 10%;
+}
+#account:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color:#f9971fda;
+}

@@ -1,9 +1,10 @@
 <header>
   <div routerLink="/" id="titre">{{title}}</div>
-  <div *ngIf="[this.user]" id="logReg">
+  <div *ngIf="this.user==null||this.user==''" id="logReg">
     <div routerLink="/login" id="login">Se Connecter {{this.user}}</div>
-    <div id="register">S'inscrire</div>
+    <div routerLink="/register" id="register">S'inscrire</div>
   </div>
+  <div *ngIf="!this.user==null||this.user!=''" id="account">Votre Compte</div>
 </header>
 <main>
   <router-outlet></router-outlet>

@@ -7,12 +7,10 @@ import { LoginService } from './login.service';
 })
 export class AppComponent {
   title = '$hare';
-  user = this.loginService.getUser();
-  constructor(private loginService: LoginService) {
-
-  }
+  user = null;
+  constructor(private loginService: LoginService) {  }
   ngDoCheck() {
-    this.user = this.loginService.getUser();
+    this.user = this.loginService.getUser();    
   }
 
 }
