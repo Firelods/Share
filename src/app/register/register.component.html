@@ -1,12 +1,13 @@
 <div id="loginForm">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <h2>S'inscrire</h2>
-    <div class="divInfos"><label for="username">Utilisateur</label><input type="text" name="username" id="username"
-        formControlName="username" required></div>
-    <div class="divInfos"><label for="email">Email</label><input type="text" name="email" id="email" formControlName="email"></div>
-    <div class="divInfos"><label for="password">Mot de passe</label><input type="text" name="password" id="password"
-        formControlName="password" required></div>
-    <div [@inOutAnimation] class="error" *ngIf="this.errorLogin">Mauvais Mot de passe</div>
+    <div class="divInfos"><label for="username">Utilisateur</label><input pattern="^[a-zA-Z-0-9._%+-]{2,25}" autocomplete="username" type="text" name="username" id="username"
+        formControlName="username" required> <div class="subInfo">Ce nom d'utilisateur vous permettra de vous connecter dans le futur, retenez le bien !</div></div>
+    <div class="divInfos"><label for="email">Email</label><input pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="email" type="text" name="email" id="email" formControlName="email"><div class="subInfo">Votre mail sera juste utilisé pour pouvoir récupérer votre mot de passe ! (promis pas d'entourloupe avec vos données ;))
+    </div></div>
+    <div class="divInfos"><label for="password">Mot de passe</label><input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" type="password" autocomplete="new-password" name="password" id="password"
+        formControlName="password" required> <div class="subInfo">Votre mot de passe doit comprendre : <ul><li>1 majuscule</li><li>un caractère spécial</li><li>entre 8 et 12 caractères</li><li>un chiffre</li></ul></div></div>
+    <div [@inOutAnimation] class="error" *ngIf="this.errorLogin">Problème lors de l'inscription</div>
     <!-- <div (click)="onClick()">CLIQUER</div> -->
     <button [disabled]="!registerForm.valid">Connexion</button>
   </form>

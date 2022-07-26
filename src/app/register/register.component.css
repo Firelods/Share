@@ -17,6 +17,7 @@ h2{
 }
 .divInfos{
     margin-bottom: 5vh;
+    height: 10vh;
 }
 .divInfos input{
     height:4vh;
@@ -76,3 +77,30 @@ button:disabled{
     padding:1em;
     border-radius: 15px;
 }
+
+.subInfo{
+    display:none;
+    position:relative;
+    top:-7vh;
+    left:55%;
+    font-size: 0.8em;
+    width: 20vw;
+    padding:0.5em;
+    background-color: rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+}
+.subInfo ul{
+    margin-left:1em;
+}
+input:focus ~ .subInfo{
+    display: block;
+}
+
+input{
+    padding-left: 1em;
+}
+
+.divInfos input:invalid{
+    background-color: rgba(255, 0, 0, 0.188);
+}
+

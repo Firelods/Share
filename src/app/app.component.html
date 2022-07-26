@@ -4,7 +4,7 @@
     <div routerLink="/login" id="login">Se Connecter {{this.user}}</div>
     <div routerLink="/register" id="register">S'inscrire</div>
   </div>
-  <div *ngIf="!this.user==null||this.user!=''" id="account">Votre Compte</div>
+  <div *ngIf="!this.user==null||this.user!=''" routerLink="/account" id="account">Votre Compte</div>
 </header>
 <main>
   <router-outlet></router-outlet>

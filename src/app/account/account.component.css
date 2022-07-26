@@ -1,0 +1,36 @@
+#hello{
+    width: fit-content;
+    background-color: rgb(243, 192, 98);
+    padding:1em;
+    margin:0 auto;
+    border-radius: 15px;
+    margin-bottom: 5vh;
+}
+
+#container{
+    width:80%;
+    
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.055);
+    border-radius: 15px;
+}
+#group{
+    margin-top: 3vh;
+
+}
+.nameGroup{
+    cursor:pointer;
+    width:10vw;
+    height:10vh;
+    margin:2em;
+    padding:1em;
+    background-color: var(--primary-light);
+    border-radius: 30px;
+}
+#participants{
+    margin-top: 20%;
+    font-size: 0.7em;
+}

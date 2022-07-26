@@ -8,7 +8,11 @@
 }
 :root{
     --primary-color: #F9961F;
+    --primary-light:#ecb571;
     --secondary-color: #c77b1e;
     --tertiary-color: #000;
     
+}
+ul{
+    list-style: none;
 }

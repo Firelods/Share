@@ -25,6 +25,7 @@ export class LoginService {
         console.log(response);
         if (response.username) {
           localStorage.setItem('user', JSON.stringify({
+            id: response.id,
             username: username,
             email: response.email,
             expiry: new Date().getTime() +(10000*60)
@@ -49,6 +50,16 @@ export class LoginService {
 
     // localStorage.removeItem('user');  
     return JSON.parse(localStorage.getItem('user') || '{}').username || '';
+  }
+  getUserId() {
+    const itemString = localStorage.getItem('user');
+    if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
+      localStorage.removeItem('user');
+      return null;
+    }
+
+    // localStorage.removeItem('user');  
+    return JSON.parse(localStorage.getItem('user') || '{}').id || '';
   }
 
 }
