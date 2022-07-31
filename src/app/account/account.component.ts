@@ -11,7 +11,7 @@ export class AccountComponent implements OnInit {
   user = "";
   idUser = "";
   nbGroups = 0;
-  groupNames: [{ nameGroup: string; participants: string[]; }] = [{ nameGroup: '', participants: [] }];
+  groupNames: [{ nameGroup: string;idGroup:string; participants: string[]; }] = [{ nameGroup: '',idGroup: '', participants: [] }];
   constructor(private loginService: LoginService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -27,11 +27,12 @@ export class AccountComponent implements OnInit {
       var i = 0;
       let resultParsed = JSON.parse(JSON.stringify(result));
       resultParsed.forEach((element: {
-        listUsers: string[]; name: string;
+        listUsers: string[]; name: string;_id:string;
       }) => {
         
         this.groupNames.push({
           nameGroup: element.name,
+          idGroup: element._id,
           participants: []
         });
         element.listUsers.forEach((user: string) => {

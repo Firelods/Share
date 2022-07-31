@@ -11,13 +11,15 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
+import { GestionGroupComponent } from './gestion-group/gestion-group.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LoginComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
+    GestionGroupComponent
   ],
   imports: [
     BrowserModule,

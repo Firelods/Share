@@ -24,7 +24,7 @@
 .nameGroup{
     cursor:pointer;
     width:10vw;
-    height:10vh;
+    height:max-content;
     margin:2em;
     padding:1em;
     background-color: var(--primary-light);
@@ -33,4 +33,7 @@
 #participants{
     margin-top: 20%;
     font-size: 0.7em;
+}
+#participants div {
+    padding:0.2em;
 }
