@@ -1,1 +1,3 @@
 <h1>Gestion du groupe id : {{group.name}}</h1>
+<h2>Dette des participants :</h2>
+<ul><li *ngFor="let dette of group.listMoney">L'Utilisateur {{dette.user1}} doit {{dette.amount.$numberDecimal}} € à l'Utilisateur {{dette.user2}}</li></ul>

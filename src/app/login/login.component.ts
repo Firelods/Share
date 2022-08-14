@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { tap } from 'rxjs/operators'
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 @Component({
   animations: [
     trigger(
@@ -34,8 +35,9 @@ import { tap } from 'rxjs/operators'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  socialUser!: SocialUser;
   errorLogin: boolean = false;
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService,private socialAuthService: SocialAuthService) {
     this.loginForm = new FormGroup({
       username: new FormControl(''),
       password: new FormControl('')
@@ -46,6 +48,14 @@ export class LoginComponent implements OnInit {
     this.errorLogin = !this.errorLogin;
   }
   ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      // this.isLoggedin = user != null;
+      console.log(this.socialUser);
+    });
+  }
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
   onSubmit(): void {
     if (!this.loginForm.valid) {

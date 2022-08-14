@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class GestionGroupComponent implements OnInit {
   idGroup: string="";
   group: any;
+  
   constructor(private route:ActivatedRoute,private http: HttpClient) { }
 
   ngOnInit(): void {
