@@ -1,3 +1,7 @@
 <h1>Gestion du groupe id : {{group.name}}</h1>
-<h2>Dette des participants :</h2>
-<ul><li *ngFor="let dette of group.listMoney">L'Utilisateur {{dette.user1}} doit {{dette.amount.$numberDecimal}} € à l'Utilisateur {{dette.user2}}</li></ul>
+<div id="dashboard">
+  <h2>Dette des participants :</h2>
+  <ul *ngIf="this.allLoaded">
+    <li *ngFor="let dette of group.listMoney"><div id="user1">{{dette.user1}} </div><div id="amout">{{dette.amount.$numberDecimal}} </div>
+        <img src="../../assets/fleche.png" alt=""><div id="user2">{{dette.user2}}</div></li>
+  </ul></div>

@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { RegisterService } from '../register.service';
@@ -34,13 +34,13 @@ import { RegisterService } from '../register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   errorLogin: boolean = false;
   constructor(private router: Router,private registerService: RegisterService,private loginService: LoginService) { 
-    this.registerForm = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl(''),
-      email:new FormControl('')
+    this.registerForm = new UntypedFormGroup({
+      username: new UntypedFormControl(''),
+      password: new UntypedFormControl(''),
+      email:new UntypedFormControl('')
     });
   }
 

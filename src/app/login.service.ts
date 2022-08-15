@@ -28,8 +28,11 @@ export class LoginService {
             id: response.id,
             username: username,
             email: response.email,
-            expiry: new Date().getTime() +(10000*60)
+            token:response.accessToken,
+            expiry: new Date().getTime() +(1000*600) // 10minutes
           }));
+          localStorage.setItem('id_token', response.accessToken);
+          localStorage.setItem('expires_at',( new Date().getTime() +(1000*3)).toString());
           console.log("connected");
           return true
         }
@@ -44,6 +47,7 @@ export class LoginService {
   getUser() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
+      console.log("expired");
       localStorage.removeItem('user');
       return null;
     }
@@ -51,6 +55,11 @@ export class LoginService {
     // localStorage.removeItem('user');  
     return JSON.parse(localStorage.getItem('user') || '{}').username || '';
   }
+
+
+
+
+  
   getUserId() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {

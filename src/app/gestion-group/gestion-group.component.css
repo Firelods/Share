@@ -1,0 +1,22 @@
+h1{
+    margin-top: 2em;
+    margin-left: 10vw;
+}
+#dashboard{
+    margin-top: 5vh;
+    margin-left:5vw;
+}
+ul{
+    padding-bottom: 20vh;
+}
+li{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+    height: 15vh;
+    align-items: center;
+}
+img{
+    width:30%;
+    position:absolute;
+}

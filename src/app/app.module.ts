@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { GestionGroupComponent } from './gestion-group/gestion-group.component';
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { HttpInterceptorService } from './service/http-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,21 +28,10 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SocialLoginModule,
+    
     NgxTypedJsModule
   ],
-  providers: [{
-    provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: false,
-      providers: [
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('804208215338-p3jbbr7ukvmf3g60o6uf72kgo6np26i6.apps.googleusercontent.com'),
-        },
-      ],
-    } as SocialAuthServiceConfig,
-  }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

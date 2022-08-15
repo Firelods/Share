@@ -76,3 +76,12 @@ main{
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     background-color:#f9971fda;
 }
+body{
+    position:relative;
+}
+footer{
+    position:absolute;
+    height:20vh;
+    width:100%;
+    bottom:0;
+}
