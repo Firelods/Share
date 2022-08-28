@@ -5,9 +5,9 @@
 
   <div id="group">Le<span *ngIf="this.nbGroups>1">s</span> voici : <ul id="listGroup">
       <li routerLink="/gestion-group" [queryParams]="{group:group.idGroup}" *ngFor="let group of groupNames">
-        <div class="nameGroup" *ngIf="group.nameGroup">
+        <div class="nameGroup petitButtonShadow"  *ngIf="group.nameGroup">
         <div>{{group.nameGroup}}</div>
-        <div id="participants">Participants : <div *ngFor="let participant of group.participants">{{participant}},</div></div></div>
+        <div id="participants">Participants : <div *ngFor="let participant of group.participants">{{participant}}</div></div></div>
       </li>
     </ul>
   </div>

@@ -1,7 +1,78 @@
-<h1>Gestion du groupe id : {{group.name}}</h1>
+<h1>Gestion du groupe : {{group.name}}</h1>
 <div id="dashboard">
-  <h2>Dette des participants :</h2>
-  <ul *ngIf="this.allLoaded">
-    <li *ngFor="let dette of group.listMoney"><div id="user1">{{dette.user1}} </div><div id="amout">{{dette.amount.$numberDecimal}} </div>
-        <img src="../../assets/fleche.png" alt=""><div id="user2">{{dette.user2}}</div></li>
-  </ul></div>
+  <div id="ajoutExpense" (click)="this.addExpense=true" class="petitButtonShadow">Ajouter une Dépense</div>
+  <div id="formExpense" *ngIf="this.addExpense">
+    <form [formGroup]="ExpenseForm" (ngSubmit)="onSubmit()">
+      <h2>Saisir les informations de la Dépense</h2>
+      <div class="divInfos"><label for="name">Nom</label><input type="text" name="name" id="name" formControlName="name"
+          required></div>
+      <div class="divInfos"><label for="amount">Montant</label><input type="text" name="amount" id="amount"
+          formControlName="amount" required></div>
+      <div class="divInfos"><label for="listUser">Utilisateurs concernés</label><input type="text" name="listUser"
+          id="listUser" required (keyup.enter)="addUserToList($event)">
+        <ul>
+          <li class="" *ngFor="let user of this.listUser"><span style="margin-right:5%;color:red;font-size:2em;" (click)="this.listUser.splice(user)">-</span>{{user}}</li>
+        </ul>
+      </div>
+      <div class="divInfos"><label for="description">Description</label><input type="text" name="description"
+          id="description" formControlName="description" required></div>
+      <div [@inOutAnimation] class="error" *ngIf="this.errorForm">Mauvais Mot de passe</div>
+      <a href="#" (click)="this.addExpense=false" class="close"></a>
+      <!-- <div (click)="onClick()">CLIQUER</div> -->
+      <button [disabled]="!ExpenseForm.valid">Connexion</button>
+    </form>
+  </div>
+  <h2>Récapitulatif :</h2>
+  <ul id="dette" *ngIf="this.allLoaded">
+    <li class="detteList" *ngFor="let dette of group.listMoney">
+      <div id="user1">{{dette.user1.username}} <span *ngIf="dette.user1.username==this.user.username">(vous)</span>
+      </div>
+
+      <div id="user2">{{dette.user2.username}}</div>
+      <div id="amout">{{dette.amount.$numberDecimal}}💸</div><button class="button"
+        [disabled]="dette.user1.username!=this.user.username">Régulariser
+        <svg class="button__svg" role="presentational" viewBox="0 0 600 600">
+          <defs>
+            <clipPath id="myClip">
+              <rect x="0" y="0" width="100%" height="50%" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#myClip)">
+
+            <g id="creditcard">
+              <path fill="#179BD7" d="M23.048,7.667L23.048,7.667L23.048,7.667c-0.028,0.179-0.06,0.362-0.096,0.55
+	c-1.237,6.351-5.469,8.545-10.874,8.545H9.326c-0.661,0-1.218,0.48-1.321,1.132l0,0l0,0L6.596,26.83l-0.399,2.533
+	c-0.067,0.428,0.263,0.814,0.695,0.814h4.881c0.578,0,1.069-0.42,1.16-0.99l0.048-0.248l0.919-5.832l0.059-0.32
+	c0.09-0.572,0.582-0.992,1.16-0.992h0.73c4.729,0,8.431-1.92,9.513-7.476c0.452-2.321,0.218-4.259-0.978-5.622
+	C24.022,8.286,23.573,7.945,23.048,7.667z" />
+              <path fill="#222D65" d="M21.754,7.151c-0.189-0.055-0.384-0.105-0.584-0.15c-0.201-0.044-0.407-0.083-0.619-0.117
+	c-0.742-0.12-1.555-0.177-2.426-0.177h-7.352c-0.181,0-0.353,0.041-0.507,0.115C9.927,6.985,9.675,7.306,9.614,7.699L8.05,17.605
+	l-0.045,0.289c0.103-0.652,0.66-1.132,1.321-1.132h2.752c5.405,0,9.637-2.195,10.874-8.545c0.037-0.188,0.068-0.371,0.096-0.55
+	c-0.313-0.166-0.652-0.308-1.017-0.429C21.941,7.208,21.848,7.179,21.754,7.151z" />
+              <path fill="#253B80" d="M9.614,7.699c0.061-0.393,0.313-0.714,0.652-0.876c0.155-0.074,0.326-0.115,0.507-0.115h7.352
+	c0.871,0,1.684,0.057,2.426,0.177c0.212,0.034,0.418,0.073,0.619,0.117c0.2,0.045,0.395,0.095,0.584,0.15
+	c0.094,0.028,0.187,0.057,0.278,0.086c0.365,0.121,0.704,0.264,1.017,0.429c0.368-2.347-0.003-3.945-1.272-5.392
+	C20.378,0.682,17.853,0,14.622,0h-9.38c-0.66,0-1.223,0.48-1.325,1.133L0.01,25.898c-0.077,0.49,0.301,0.932,0.795,0.932h5.791
+	l1.454-9.225L9.614,7.699z" />
+            </g>
+          </g>
+          <g id="wallet">
+            <path
+              d="M478,288.23h-337A28.93,28.93,0,0,0,112,317.14V546.2a29,29,0,0,0,28.94,28.95H478a29,29,0,0,0,28.95-28.94h0v-229A29,29,0,0,0,478,288.23Z"
+              fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path
+              d="M512.83,382.71H416.71a28.93,28.93,0,0,0-28.95,28.94h0V467.8a29,29,0,0,0,28.95,28.95h96.12a19.31,19.31,0,0,0,19.3-19.3V402a19.3,19.3,0,0,0-19.3-19.3Z"
+              fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path d="M451.46,435.79v7.88a14.48,14.48,0,1,1-29,0v-7.9a14.48,14.48,0,0,1,29,0Z" fill="#a4bdc1"
+              stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path
+              d="M147.87,541.93V320.84c-.05-13.2,8.25-21.51,21.62-24.27a42.71,42.71,0,0,1,7.14-1.32l-29.36-.63a67.77,67.77,0,0,0-9.13.45c-13.37,2.75-20.32,12.57-20.27,25.77l.38,221.24c-1.57,15.44,8.15,27.08,25.34,26.1l33-.19c-15.9,0-28.78-10.58-28.76-25.93Z"
+              fill="#7b8f91" />
+            <path d="M148.16,343.22a6,6,0,0,0-6,6v92a6,6,0,0,0,12,0v-92A6,6,0,0,0,148.16,343.22Z" fill="#323c44" />
+          </g>
+
+        </svg></button>
+      <div id="unauthorized">Vous n'êtes pas autorisé à faire cela</div>
+    </li>
+  </ul>
+</div>

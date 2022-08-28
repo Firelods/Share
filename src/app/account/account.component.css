@@ -1,14 +1,16 @@
 #hello{
     width: fit-content;
-    background-color: rgb(243, 192, 98);
+    background-color: var(--primary-color);
     padding:1em;
     margin:0 auto;
     border-radius: 15px;
     margin-bottom: 5vh;
+    box-shadow:  6px 6px 12px #bd7218,
+             -6px -6px 12px #ffba26;
 }
 
 #container{
-    width:80%;
+    width:50%;
     
     margin:0 auto;
     display: flex;
@@ -16,6 +18,8 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.055);
     border-radius: 15px;
+    box-shadow:  6px 6px 29px #bfbfbf,
+             -6px -6px 29px #ffffff;
 }
 #group{
     margin-top: 3vh;
@@ -27,13 +31,18 @@
     height:max-content;
     margin:2em;
     padding:1em;
-    background-color: var(--primary-light);
+    background-color: var(--primary-color);
     border-radius: 30px;
+
+}
+.nameGroup div{
+    font-size: 1.3em;
 }
 #participants{
     margin-top: 20%;
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 #participants div {
-    padding:0.2em;
+    padding:0.5em;
+    font-size: 0.9em;
 }

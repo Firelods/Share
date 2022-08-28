@@ -3,6 +3,7 @@ header #titre{
     font-size: 3em;
     color: var(--primary-color);
     padding-left: 5vw;
+    font-weight: 300;
 }
 
 header {
@@ -11,6 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 7vh;
+    font-weight: 700;
 }
 
 #logReg{
@@ -53,11 +55,11 @@ header {
 }
 
 main{
-    height: 64vh;
+    /* height: 64vh; */
 }
 
 #account{
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    
     transition: all 0.3s ease-in-out;
     width:fit-content;
     padding:1.5em;
@@ -72,16 +74,30 @@ main{
     background-color: var(--primary-color);
     margin-right: 10%;
 }
-#account:hover{
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    background-color:#f9971fda;
-}
+
 body{
     position:relative;
 }
 footer{
-    position:absolute;
+    position:relative;
     height:20vh;
     width:100%;
-    bottom:0;
+}
+footer{
+    margin-top: 20vh !important;
+}
+footer #listFooter{
+    margin-top: -20px;
+    background-color: #291B44;
+    display: flex;
+    justify-content: center;
+}
+footer ul{
+    list-style: none;
+
+    color: white;
+}
+footer ul li{
+    padding:1em;
+    cursor: pointer;
 }

@@ -41,7 +41,7 @@ export class AccountComponent implements OnInit {
           this.http.get<any>('http://localhost:8080/api/user/' + user).subscribe(result => {
             console.log(this.groupNames[i]);
             
-            this.groupNames[i].participants.push(result)
+            this.groupNames[i].participants.push(result.username)
           });
         });
         i++;

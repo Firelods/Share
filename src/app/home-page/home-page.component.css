@@ -23,16 +23,10 @@ h2{
     font-size: 1.8em;
     border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     transition: all 0.3s ease-in-out;
 }
 
-#buttonTry:hover{
-    background-color: var(--secondary-color);
-    color: white;
-   
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
+
 
 #buttonTry span{
     font-family: 'Kaushan Script', cursive;
