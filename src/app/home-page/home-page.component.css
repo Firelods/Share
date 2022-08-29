@@ -1,51 +1,54 @@
-#titreDefilant{
-    padding-top: 25vh;
-    margin-left:10vw;
-    width: fit-content;
-    height: 10vh;
-}
-main h1{
-    font-family: 'Roboto Mono', monospace;
-}
-h2{
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-left: 20vw;
+#titreDefilant {
+  padding-top: 25vh;
+  margin-left: 10vw;
+  width: fit-content;
+  height: 10vh;
 }
 
-#buttonTry{
-    margin: 0 auto;
-    margin-top: 10vh;
-    width: fit-content;
-    background-color: var(--primary-color);
-    padding:2vw;
-    font-size: 1.8em;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+main h1 {
+  font-family: 'Roboto Mono', monospace;
 }
 
+h2 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 20vw;
+}
 
-
-#buttonTry span{
-    font-family: 'Kaushan Script', cursive;
-    font-size: 1.2em;
+#buttonTry {
+  margin: 0 auto;
+  margin-top: 10vh;
+  width: fit-content;
+  background-color: var(--primary-color);
+  padding: 2vw;
+  font-size: 1.8em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 
-#billet{
-    position:absolute;
-    top: 76vh;
-    left: 77vw;
-    width: 100px;
-    z-index: -1;
+
+#buttonTry span {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 1.2em;
 }
-#friends{
-    position: absolute;
-    width: 600px;
-    top: 29vw;
-    left: 60vw;
-    transform: rotate(351deg);
-    z-index: -1;
+
+
+#billet {
+  position: absolute;
+  top: 76vh;
+  left: 77vw;
+  width: 100px;
+  z-index: -1;
+}
+
+#friends {
+  position: absolute;
+  width: 600px;
+  top: 29vw;
+  left: 60vw;
+  transform: rotate(351deg);
+  z-index: -1;
 }
