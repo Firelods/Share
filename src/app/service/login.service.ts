@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AppComponent } from './app.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 import { Observable, of } from 'rxjs';
+import { RequestService } from './request.service';
 const httpOptions: any = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -16,11 +16,11 @@ const httpOptions: any = {
 })
 export class LoginService {
   loggedIn: boolean = false;
-  url = 'http://localhost:8080/api/auth/signin';
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private requestService: RequestService) { }
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.url, { username: username, password: password }).pipe(map(
+    return this.http.post<any>(this.requestService.url + "auth/signin", { username: username, password: password }).pipe(map(
       (response) => {
         console.log(response);
         if (response.username) {
@@ -28,22 +28,22 @@ export class LoginService {
             id: response.id,
             username: username,
             email: response.email,
-            token:response.accessToken,
-            expiry: new Date().getTime() +(1000*600) // 10minutes
+            token: response.accessToken,
+            expiry: new Date().getTime() + (1000 * 600) // 10minutes
           }));
           localStorage.setItem('id_token', response.accessToken);
-          localStorage.setItem('expires_at',( new Date().getTime() +(1000*3)).toString());
+          localStorage.setItem('expires_at', (new Date().getTime() + (1000 * 3)).toString());
           console.log("connected");
           return true
         }
-        else{
+        else {
           return false;
         }
       },
-    
-    ),catchError(() => {return of(false)}));
+
+    ), catchError(() => { return of(false) }));
   }
-  
+
   getUser() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
@@ -59,7 +59,7 @@ export class LoginService {
 
 
 
-  
+
   getUserId() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {

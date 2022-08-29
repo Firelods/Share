@@ -1,6 +1,6 @@
 <h1>Gestion du groupe : {{group.name}}</h1>
 <div id="dashboard">
-  <div id="ajoutExpense" (click)="this.addExpense=true" class="petitButtonShadow">Ajouter une Dépense</div>
+  <div id="ajoutExpense" (click)="clickAddExpense()" class="petitButtonShadow">Ajouter une Dépense</div>
   <div id="formExpense" *ngIf="this.addExpense">
     <form [formGroup]="ExpenseForm" (ngSubmit)="onSubmit()">
       <h2>Saisir les informations de la Dépense</h2>
@@ -8,18 +8,16 @@
           required></div>
       <div class="divInfos"><label for="amount">Montant</label><input type="text" name="amount" id="amount"
           formControlName="amount" required></div>
-      <div class="divInfos"><label for="listUser">Utilisateurs concernés</label><input type="text" name="listUser"
-          id="listUser" required (keyup.enter)="addUserToList($event)">
-        <ul>
-          <li class="" *ngFor="let user of this.listUser"><span style="margin-right:5%;color:red;font-size:2em;" (click)="this.listUser.splice(user)">-</span>{{user}}</li>
-        </ul>
+      <div class="divInfos"><label for="listUser">Utilisateurs concernés</label>
+        <label *ngFor="let item of this.listUser" for=""><input type="checkbox" (change)="selectTeamUse($event)" name="{{item}}" id="{{item}}" >{{item}}</label>
+        
       </div>
       <div class="divInfos"><label for="description">Description</label><input type="text" name="description"
           id="description" formControlName="description" required></div>
       <div [@inOutAnimation] class="error" *ngIf="this.errorForm">Mauvais Mot de passe</div>
       <a href="#" (click)="this.addExpense=false" class="close"></a>
       <!-- <div (click)="onClick()">CLIQUER</div> -->
-      <button [disabled]="!ExpenseForm.valid">Connexion</button>
+      <button [disabled]="!ExpenseForm.valid">Ajouter la dépense</button>
     </form>
   </div>
   <h2>Récapitulatif :</h2>

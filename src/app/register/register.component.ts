@@ -2,8 +2,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
-import { RegisterService } from '../register.service';
+import { LoginService } from '../service/login.service';
+import { RegisterService } from '../service/register.service';
 
 @Component({
   animations: [

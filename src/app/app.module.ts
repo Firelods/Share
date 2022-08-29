@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 
@@ -28,7 +28,7 @@ import { HttpInterceptorService } from './service/http-interceptor.service';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    
+    FormsModule,
     NgxTypedJsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
