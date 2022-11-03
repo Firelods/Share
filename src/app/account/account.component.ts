@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
-
+import { UserService } from '../service/user.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -13,7 +13,7 @@ export class AccountComponent implements OnInit {
   idUser = "";
   nbGroups = 0;
   groupNames: [{ nameGroup: string; idGroup: string; participants: string[]; }] = [{ nameGroup: '', idGroup: '', participants: [] }];
-  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService) { }
+  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
@@ -40,10 +40,14 @@ export class AccountComponent implements OnInit {
         });
         element.listUsers.forEach((user: string) => {
           this.http.get<any>(this.requestService.url + 'user/' + user).subscribe(result => {
-            console.log(this.groupNames[i]);
+            console.log(user);
+            console.log(result);
 
-            this.groupNames[i].participants.push(result.username)
+            this.groupNames[i].participants.push(result)
           });
+          // this.userService.getUser(user);
+          console.log(user);
+
         });
         i++;
       });

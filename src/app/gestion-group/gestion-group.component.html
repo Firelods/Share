@@ -1,21 +1,31 @@
-<h1>Gestion du groupe : {{group.name}}</h1>
+<h1>Gestion du groupe : {{ group.name }}</h1>
 <div id="dashboard">
-  <div id="ajoutExpense" (click)="clickAddExpense()" class="petitButtonShadow">Ajouter une Dépense</div>
+  <div id="ajoutExpense" (click)="clickAddExpense()" class="petitButtonShadow">
+    Ajouter une Dépense
+  </div>
   <div id="formExpense" *ngIf="this.addExpense">
     <form [formGroup]="ExpenseForm" (ngSubmit)="onSubmit()">
       <h2>Saisir les informations de la Dépense</h2>
-      <div class="divInfos"><label for="name">Nom</label><input type="text" name="name" id="name" formControlName="name"
-          required></div>
-      <div class="divInfos"><label for="amount">Montant</label><input type="text" name="amount" id="amount"
-          formControlName="amount" required></div>
-      <div class="divInfos"><label for="listUser">Utilisateurs concernés</label>
-        <label *ngFor="let item of this.listUser" for=""><input type="checkbox" (change)="selectTeamUse($event)" name="{{item}}" id="{{item}}" >{{item}}</label>
-        
+      <div class="divInfos">
+        <label for="name">Nom</label><input type="text" name="name" id="name" formControlName="name" required />
       </div>
-      <div class="divInfos"><label for="description">Description</label><input type="text" name="description"
-          id="description" formControlName="description" required></div>
-      <div [@inOutAnimation] class="error" *ngIf="this.errorForm">Mauvais Mot de passe</div>
-      <a href="#" (click)="this.addExpense=false" class="close"></a>
+      <div class="divInfos">
+        <label for="amount">Montant</label><input type="text" name="amount" id="amount" formControlName="amount"
+          required />
+      </div>
+      <div class="divInfos">
+        <label for="listUser">Utilisateurs concernés</label>
+        <label *ngFor="let item of this.listUser" for=""><input type="checkbox" (change)="selectTeamUse($event)"
+            name="{{ item }}" id="{{ item }}" />{{ item }}</label>
+      </div>
+      <div class="divInfos">
+        <label for="description">Description</label><input type="text" name="description" id="description"
+          formControlName="description" required />
+      </div>
+      <div [@inOutAnimation] class="error" *ngIf="this.errorForm">
+        Mauvais Mot de passe
+      </div>
+      <a href="#" (click)="this.addExpense = false" class="close"></a>
       <!-- <div (click)="onClick()">CLIQUER</div> -->
       <button [disabled]="!ExpenseForm.valid">Ajouter la dépense</button>
     </form>
@@ -23,12 +33,15 @@
   <h2>Récapitulatif :</h2>
   <ul id="dette" *ngIf="this.allLoaded">
     <li class="detteList" *ngFor="let dette of group.listMoney">
-      <div id="user1">{{dette.user1.username}} <span *ngIf="dette.user1.username==this.user.username">(vous)</span>
+      <div id="user1">
+        {{ dette.user1 }}
+        <span *ngIf="dette.user1 == this.user.username">(vous)</span>
       </div>
 
-      <div id="user2">{{dette.user2.username}}</div>
-      <div id="amout">{{dette.amount.$numberDecimal}}💸</div><button class="button"
-        [disabled]="dette.user1.username!=this.user.username">Régulariser
+      <div id="user2">{{ dette.user2}}</div>
+      <div id="amout">{{ dette.amount.$numberDecimal }}💸</div>
+      <button class="button" [disabled]="dette.user1.username != this.user.username">
+        Régulariser
         <svg class="button__svg" role="presentational" viewBox="0 0 600 600">
           <defs>
             <clipPath id="myClip">
@@ -36,7 +49,6 @@
             </clipPath>
           </defs>
           <g clip-path="url(#myClip)">
-
             <g id="creditcard">
               <path fill="#179BD7" d="M23.048,7.667L23.048,7.667L23.048,7.667c-0.028,0.179-0.06,0.362-0.096,0.55
 	c-1.237,6.351-5.469,8.545-10.874,8.545H9.326c-0.661,0-1.218,0.48-1.321,1.132l0,0l0,0L6.596,26.83l-0.399,2.533
@@ -68,8 +80,8 @@
               fill="#7b8f91" />
             <path d="M148.16,343.22a6,6,0,0,0-6,6v92a6,6,0,0,0,12,0v-92A6,6,0,0,0,148.16,343.22Z" fill="#323c44" />
           </g>
-
-        </svg></button>
+        </svg>
+      </button>
       <div id="unauthorized">Vous n'êtes pas autorisé à faire cela</div>
     </li>
   </ul>
