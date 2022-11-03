@@ -37,6 +37,8 @@ export class GestionGroupComponent implements OnInit {
         console.log(result);
         this.group = result;
         this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
+          console.log(element.user1);
+
           this.http.get<any>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
             element.user1 = result;
             this.listUser.push(result.username);
