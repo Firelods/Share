@@ -24,7 +24,9 @@ export class AccountComponent implements OnInit {
   setNbgroups(): void {
     var jsonParsed = JSON.parse(localStorage.getItem('user') || "{}");
     console.log(jsonParsed)
-    this.http.get<any>(this.requestService.url + this.idUser + '/groups' + '?user=' + jsonParsed.token).subscribe(result => {
+    console.log("test");
+
+    this.http.get<any>(this.requestService.url + this.idUser + '/groups').subscribe(result => {
       this.nbGroups = result.length;
       console.log(result);
       var i = 0;

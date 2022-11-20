@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
 
 @Component({
@@ -19,8 +20,10 @@ export class GestionGroupComponent implements OnInit {
   allLoaded: boolean = false;
   teamUse: string[] = [];
   errorForm: boolean = false;
-  utilisateur: string = "";
-  constructor(private route: ActivatedRoute, private http: HttpClient, private requestService: RequestService) {
+  @ViewChild('formApparition', { static: false })
+  public formExpenseCss!: ElementRef;
+  // utilisateur: string = "";
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private requestService: RequestService) {
     this.ExpenseForm = new UntypedFormGroup({
       name: new UntypedFormControl(''),
       amount: new UntypedFormControl(''),
@@ -30,6 +33,7 @@ export class GestionGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.user = JSON.parse(localStorage.getItem('user') || "{}");
     this.route.queryParams.subscribe(params => {
       this.idGroup = params['group'];
@@ -37,35 +41,57 @@ export class GestionGroupComponent implements OnInit {
         console.log(result);
         this.group = result;
         this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
-          console.log(element.user1);
-
           this.http.get<any>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
+            this.listUser.push({ username: result, id: element.user1 });
             element.user1 = result;
-            this.listUser.push(result.username);
           });
           this.http.get<any>(this.requestService.url + 'user/' + element.user2).subscribe(result => {
+            this.listUser.push({ username: result, id: element.user2 });
             element.user2 = result;
-            this.listUser.push(result.username);
           });
         });
         this.allLoaded = true;
       });
-
     }
     );
   }
   onSubmit() {
+    this.ExpenseForm.value.utilisateurConcerned = this.teamUse;
     console.log(this.ExpenseForm.value);
-    console.log(this.utilisateur)
-    // this.http.post<any>(this.requestService.url +'groups/addExpenses',{name:this.ExpenseForm.value.name,})
+    console.log(this.user.username);
+    this.http.post<any>(this.requestService.url + 'groups/addExpenses', {
+      group: this.idGroup,
+      name: this.ExpenseForm.value.name,
+      description: this.ExpenseForm.value.description,
+      amount: this.ExpenseForm.value.amount,
+      listUsers: this.ExpenseForm.value.utilisateurConcerned,
+      date: new Date(),
+      owner: this.user.id
+    }).subscribe(result => {
+      console.log(result);
+      this.ngOnInit();
+      this.addExpense = false;
+    })
+  }
+  ngAfterViewInit() {
+    console.log(this.formExpenseCss);
   }
   addUserToList(event: any) {
     this.listUser.push(event.target.value);
-
   }
   clickAddExpense() {
     this.addExpense = true;
+
+    console.log(this.formExpenseCss);
+
+    this.formExpenseCss.nativeElement.className = "activated";
     this.listUser = [...new Set(this.listUser)];
+    this.listUser = this.listUser.filter((value, index) => {
+      const _value = JSON.stringify(value);
+      return index === this.listUser.findIndex(obj => {
+        return JSON.stringify(obj) === _value;
+      });
+    });
     console.log(this.listUser);
   }
   selectTeamUse(user: any) {
@@ -77,7 +103,6 @@ export class GestionGroupComponent implements OnInit {
       this.teamUse.push(user);
     }
     console.log(this.teamUse);
-
 
   }
 
