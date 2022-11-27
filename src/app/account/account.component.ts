@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GroupeExpense } from '../groupe-expense';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
 import { UserService } from '../service/user.service';
@@ -13,7 +15,7 @@ export class AccountComponent implements OnInit {
   idUser = "";
   nbGroups = 0;
   groupNames: [{ nameGroup: string; idGroup: string; participants: string[]; }] = [{ nameGroup: '', idGroup: '', participants: [] }];
-  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService) { }
+  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
@@ -21,12 +23,14 @@ export class AccountComponent implements OnInit {
     this.setNbgroups();
 
   }
-  setNbgroups(): void {
-    var jsonParsed = JSON.parse(localStorage.getItem('user') || "{}");
-    console.log(jsonParsed)
-    console.log("test");
+  disconnect(): void {
+    this.loginService.disconnect();
+    //route to login
+    this.router.navigate(['/login'])
+  }
 
-    this.http.get<any>(this.requestService.url + this.idUser + '/groups').subscribe(result => {
+  setNbgroups(): void {
+    this.http.get<GroupeExpense[]>(this.requestService.url + this.idUser + '/groups').subscribe(result => {
       this.nbGroups = result.length;
       console.log(result);
       var i = 0;
@@ -59,10 +63,5 @@ export class AccountComponent implements OnInit {
     // this.groupNames.shift();
   }
 
-}
-interface Group {
-  name: string;
-  listUsers: string[];
-  listMoney: [user1: string, user2: string, amount: number];
 
 }

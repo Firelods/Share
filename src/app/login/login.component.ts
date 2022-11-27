@@ -35,7 +35,7 @@ import { tap } from 'rxjs/operators'
 })
 export class LoginComponent implements OnInit {
   loginForm: UntypedFormGroup;
-  errorLogin: boolean = false;
+  errorLogin: String = "";
   constructor(private router: Router, private loginService: LoginService) {
     this.loginForm = new UntypedFormGroup({
       username: new UntypedFormControl(''),
@@ -43,20 +43,18 @@ export class LoginComponent implements OnInit {
     });
 
   }
-  onClick(): void {
-    this.errorLogin = !this.errorLogin;
-  }
   ngOnInit(): void {
-    
+
   }
   onSubmit(): void {
     if (!this.loginForm.valid) {
       return;
     }
-    var result = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(Auth => { 
+    var result = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(Auth => {
       console.log(Auth);
-      
-      if (Auth) { this.router.navigate(['/home']); } else { this.errorLogin = true; } });
+
+      if (Auth == "connected") { this.router.navigate(['/home']); } else { this.errorLogin = Auth; }
+    });
     console.log(result);
 
     /*

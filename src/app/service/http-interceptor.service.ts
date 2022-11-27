@@ -13,9 +13,10 @@ export class HttpInterceptorService implements HttpInterceptor {
     console.log("INTERCEPTOR")
     if (idToken) {
       const cloned = req.clone({
-        headers: req.headers.set("access-token", idToken)
-      });
+        headers: req.headers.set("access-token", idToken),
 
+      });
+      cloned.headers.set("Access-Control-Allow-Origin", "http://share-api.clement-lefevre.fr")
       return next.handle(cloned);
     }
     else {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GroupeExpense } from '../groupe-expense';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
 
@@ -13,7 +14,7 @@ import { RequestService } from '../service/request.service';
 export class GestionGroupComponent implements OnInit {
   addExpense: boolean = false;
   idGroup: string = "";
-  group: any = "{}";
+  group!: GroupeExpense;
   ExpenseForm: UntypedFormGroup;
   user: any = "{}";
   listUser: any[] = [];
@@ -40,7 +41,7 @@ export class GestionGroupComponent implements OnInit {
       this.http.get<any>(this.requestService.url + 'group/' + this.idGroup).subscribe(result => {
         console.log(result);
         this.group = result;
-        this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
+        this.group.listMoney.forEach((element: { user1: String, user2: String }) => {
           this.http.get<any>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
             this.listUser.push({ username: result, id: element.user1 });
             element.user1 = result;
@@ -71,6 +72,7 @@ export class GestionGroupComponent implements OnInit {
       console.log(result);
       this.ngOnInit();
       this.addExpense = false;
+      this.formExpenseCss.nativeElement.className = "";
     })
   }
   ngAfterViewInit() {
@@ -104,6 +106,10 @@ export class GestionGroupComponent implements OnInit {
     }
     console.log(this.teamUse);
 
+  }
+  showHistory() {
+    // navigate to history with this.group
+    this.router.navigate(['/history'], { state: { group: this.group }, queryParams: { groupId: this.idGroup } });
   }
 
 }

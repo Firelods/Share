@@ -21,17 +21,6 @@ h2 {
   cursor: pointer;
 }
 
-#unauthorized {
-  font-size: 0.7em;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  background-color: red;
-  margin-left: 70%;
-  opacity: 0.8;
-  display: none;
-}
-
 ul#dette {
   background-color: rgba(236, 235, 235, 0.692);
   width: 50vw;
@@ -39,13 +28,11 @@ ul#dette {
   border-radius: 7px;
   padding: 10px;
   border-radius: 12px;
-  
-  box-shadow: inset 7px 7px 18px #acacac,
-    inset -7px -7px 18px #ffffff;
+
+  box-shadow: inset 7px 7px 18px #acacac, inset -7px -7px 18px #ffffff;
 }
 
 .detteList {
-
   position: relative;
   display: flex;
   align-items: center;
@@ -75,7 +62,7 @@ ul#dette {
 .close:after {
   position: absolute;
   left: 15px;
-  content: ' ';
+  content: " ";
   height: 33px;
   width: 2px;
   background-color: rgb(255, 255, 255);
@@ -89,9 +76,8 @@ ul#dette {
   transform: rotate(-45deg);
 }
 
-
 .detteList:hover {
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
 #user1,
@@ -116,19 +102,19 @@ button:disabled {
   opacity: 0.2;
 }
 
-
-
 #formExpense {
   color: white;
   margin: 0 auto;
   /*width:50%;
-  *//*margin-top: 10vh;
-  *//*background-color: rgb(236, 236, 236);
-  */box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
+  */ /*margin-top: 10vh;
+  */ /*background-color: rgb(236, 236, 236);
+  */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
   padding: 5vw;
   border-radius: 15px;
   /*display: none;
-  */position: absolute;
+  */
+  position: absolute;
   width: 60%;
   visibility: hidden;
   opacity: 0;
@@ -137,13 +123,13 @@ button:disabled {
   top: 10%;
   left: 15%;
   z-index: 99;
-  transition: visibility 0s,opacity 0.3s ease;
-  -webkit-transition: visibility 0s,opacity 0.3s ease;
-  -moz-transition: visibility 0s,opacity 0.3s ease;
-  -ms-transition: visibility 0s,opacity 0.3s ease;
-  -o-transition: visibility 0s,opacity 0.3s ease;
+  transition: visibility 0s, opacity 0.3s ease;
+  -webkit-transition: visibility 0s, opacity 0.3s ease;
+  -moz-transition: visibility 0s, opacity 0.3s ease;
+  -ms-transition: visibility 0s, opacity 0.3s ease;
+  -o-transition: visibility 0s, opacity 0.3s ease;
 }
-#formExpense.activated{
+#formExpense.activated {
   opacity: 1;
   visibility: visible;
 }
@@ -171,15 +157,11 @@ button:disabled {
     /*  set transition for mouse enter & exit */
   }
 
-
-
   button:hover #creditcard {
     transform: translateX(200px) translateY(50px) scale(8);
     transition: transform 0.2s ease-in-out;
     /*  overide transition for mouse enter */
   }
-
-
 }
 
 @keyframes bounce {
@@ -198,14 +180,12 @@ button:disabled {
 
 .button:hover .button__text span {
   transform: translateY(-0.25rem);
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
-.button:disabled:hover~#unauthorized {
-  display: inline;
+.button:disabled:hover {
+  cursor: not-allowed;
 }
-
-
 
 .button {
   border: none;
@@ -235,13 +215,9 @@ button:disabled {
   height: 140%;
 }
 
-
-
 h2 {
   margin-bottom: 5vh;
 }
-
-
 
 .divInfos {
   margin-bottom: 5vh;
@@ -258,11 +234,13 @@ h2 {
   border: 0;
   transition: all 0.2s ease;
 }
-.divInfos input[type="text"]:focus{
+.divInfos input[type="text"]:focus {
   outline: none;
   --spread: 20px;
-  box-shadow: -10px -10px var(--spread) 0px #fbb662, 0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #F9961F, 10px 0 var(--spread) 0px #F9961F, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
-
+  box-shadow: -10px -10px var(--spread) 0px #fbb662,
+    0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #f9961f,
+    10px 0 var(--spread) 0px #f9961f, 10px 10px var(--spread) 0px #f77737,
+    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
 }
 
 .divInfos select {
@@ -270,7 +248,7 @@ h2 {
   padding: 1em;
 }
 
-#userList{
+#userList {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -288,11 +266,9 @@ button {
   transition: background-color 0.5s linear;
 }
 
-
 button:active:disabled {
   animation: secousse 0.1s linear 2;
 }
-
 
 button:disabled {
   background-color: rgba(255, 0, 0, 0.562);
@@ -300,22 +276,21 @@ button:disabled {
 
 @keyframes secousse {
   0% {
-    transform: rotate(0)
+    transform: rotate(0);
   }
 
   25% {
-    transform: rotate(10deg)
+    transform: rotate(10deg);
   }
 
   75% {
-    transform: rotate(-10deg)
+    transform: rotate(-10deg);
   }
 
   100% {
-    transform: rotate(0)
+    transform: rotate(0);
   }
 }
-
 
 /* Hide the default checkbox */
 .container input {
@@ -324,18 +299,18 @@ button:disabled {
   cursor: pointer;
   height: 0;
   width: 0;
- }
- 
- .container {
+}
+
+.container {
   display: flex;
   position: relative;
   cursor: pointer;
   font-size: 25px;
   user-select: none;
- }
- 
- /* Create a custom checkbox */
- .checkmark {
+}
+
+/* Create a custom checkbox */
+.checkmark {
   position: relative;
   display: inline-block;
   top: 0;
@@ -346,28 +321,31 @@ button:disabled {
   border-radius: 50px;
   transition: all 0.7s;
   --spread: 20px;
- }
- 
- /* When the checkbox is checked, add a blue background */
- .container input:checked ~ .checkmark {
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
   background: black;
-  box-shadow: -10px -10px var(--spread) 0px #fbb662, 0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #F9961F, 10px 0 var(--spread) 0px #FD1D1D, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
- }
- 
- /* Create the checkmark/indicator (hidden when not checked) */
- .checkmark:after {
+  box-shadow: -10px -10px var(--spread) 0px #fbb662,
+    0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #f9961f,
+    10px 0 var(--spread) 0px #fd1d1d, 10px 10px var(--spread) 0px #f77737,
+    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
   content: "";
   position: absolute;
   display: none;
- }
- 
- /* Show the checkmark when checked */
- .container input:checked ~ .checkmark:after {
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
   display: inline-block;
- }
- 
- /* Style the checkmark/indicator */
- .container .checkmark:after {
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
   left: 0.45em;
   top: 0.25em;
   width: 0.25em;
@@ -375,9 +353,15 @@ button:disabled {
   border: solid #f0f0f0;
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);
- }
+}
 
- .itemUsername{
+.itemUsername {
   margin-left: 1em;
-  font-size: 15px
- }
+  font-size: 15px;
+}
+
+.headerButtons {
+  display: flex;
+  width: 25vw;
+  justify-content: space-between;
+}

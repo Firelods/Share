@@ -8,15 +8,15 @@ import { RequestService } from './request.service';
 })
 export class RegisterService {
   constructor(private http: HttpClient, private requestService: RequestService) { }
-  register(username: string, password: string, email: string): Observable<boolean> {
+  register(username: string, password: string, email: string): Observable<String> {
     return this.http.post<any>(this.requestService.url + "auth/signup", { username: username, password: password, email: email }).pipe(map(
       (response) => {
         console.log(response);
 
-        return true
+        return "connected";
 
       },
 
-    ), catchError(() => { return of(false) }));
+    ), catchError((err) => { return of(err.error.message) }));
   }
 }

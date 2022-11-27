@@ -35,40 +35,40 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: UntypedFormGroup;
-  errorLogin: boolean = false;
-  constructor(private router: Router,private registerService: RegisterService,private loginService: LoginService) { 
+  errorLogin: String = "";
+  constructor(private router: Router, private registerService: RegisterService, private loginService: LoginService) {
     this.registerForm = new UntypedFormGroup({
       username: new UntypedFormControl(''),
       password: new UntypedFormControl(''),
-      email:new UntypedFormControl('')
+      email: new UntypedFormControl('')
     });
   }
 
   ngOnInit(): void {
   }
   onSubmit(): void {
-    if (!this.registerForm.valid){
+    if (!this.registerForm.valid) {
+      this.errorLogin = "Please fill all the fields";
       return;
-      this.errorLogin = true;
     }
 
-    var result=this.registerService.register(this.registerForm.value.username,this.registerForm.value.password,this.registerForm.value.email).subscribe(Auth => {
+    var result = this.registerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.email).subscribe(Auth => {
       console.log(Auth);
-      if(Auth){
-        var LoginResult= this.loginService.login(this.registerForm.value.username,this.registerForm.value.password).subscribe(LoginResult=>{
+      if (Auth == "connected") {
+        var LoginRequest = this.loginService.login(this.registerForm.value.username, this.registerForm.value.password).subscribe(LoginResult => {
           console.log(LoginResult);
-          if(LoginResult){
+          if (LoginResult == "connected") {
             this.router.navigate(['/home']);
           }
-          else{
-            this.errorLogin=true;
+          else {
+            this.errorLogin = LoginResult;
           }
         });
-      }else{
-        this.errorLogin = true;
+      } else {
+        this.errorLogin = Auth;
       }
-      
-      });
+
+    });
 
   };
 

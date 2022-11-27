@@ -19,7 +19,7 @@ export class LoginService {
 
 
   constructor(private http: HttpClient, private requestService: RequestService) { }
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<String> {
     return this.http.post<any>(this.requestService.url + "auth/signin", { username: username, password: password }).pipe(map(
       (response) => {
         console.log(response);
@@ -34,14 +34,22 @@ export class LoginService {
           localStorage.setItem('id_token', response.accessToken);
           localStorage.setItem('expires_at', (new Date().getTime() + (1000 * 3)).toString());
           console.log("connected");
-          return true
+          return "connected";
         }
         else {
-          return false;
+          console.log(response.message);
+
+          if (response.message) {
+            return response.message;
+          }
         }
       },
 
-    ), catchError(() => { return of(false) }));
+    ), catchError((err) => {
+      console.log(err);
+
+      return of(err.error.message)
+    }));
   }
 
   getUser() {
@@ -70,5 +78,9 @@ export class LoginService {
     // localStorage.removeItem('user');  
     return JSON.parse(localStorage.getItem('user') || '{}').id || '';
   }
+  disconnect() {
+    console.log("disconnect");
 
+    localStorage.removeItem('user');
+  }
 }

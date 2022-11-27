@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { GestionGroupComponent } from './gestion-group/gestion-group.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
+import { HistoryComponent } from './history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,9 @@ import { HttpInterceptorService } from './service/http-interceptor.service';
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    GestionGroupComponent
+    GestionGroupComponent,
+    HistoryComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { HttpInterceptorService } from './service/http-interceptor.service';
     FormsModule,
     NgxTypedJsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, GestionGroupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
