@@ -1,103 +1,101 @@
-header #titre{
-    font-family: 'Kaushan Script', cursive;
-    font-size: 4em;
-    color: var(--primary-color);
-    padding-left: 5vw;
-    font-weight: 300;
+header #titre {
+  font-family: "Kaushan Script", cursive;
+  font-size: 4em;
+  color: var(--primary-color);
+  padding-left: 5vw;
+  font-weight: 300;
 }
 
 header {
-    padding:1vw;
-    /* background-color: aqua; */
-    display: flex;
-    justify-content: space-between;
-    height: 7vh;
-    font-weight: 700;
+  padding: 1vw;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  height: 7vh;
+  font-weight: 700;
 }
 
-#logReg{
-    display:flex;
-    margin-right: 15vw;
+#logReg {
+  display: flex;
+  margin-right: 15vw;
 }
 
-#logReg div{
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    transition: all 0.3s ease-in-out;
-    width:fit-content;
-    padding:1em;
-    font-size: 0.9em;
-    border-radius: 20px;
-    text-align: center;
-    margin-left: 1em;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#logReg div {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  width: fit-content;
+  padding: 1em;
+  font-size: 0.9em;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: 1em;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#logReg div:hover{
-    background-color: var(--secondary-color);
-    color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+#logReg div:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-#login{
-    background-color: var(--primary-color);
-
+#login {
+  background-color: var(--primary-color);
 }
 
-#register{
-    background-color: #291B44;
-    color:white;
+#register {
+  background-color: #291b44;
+  color: white;
 }
-#register:hover{
-    background-color: #54388d !important;
-}
-
-main{
-    /* height: 64vh; */
+#register:hover {
+  background-color: #54388d !important;
 }
 
-#account{
-    
-    transition: all 0.3s ease-in-out;
-    width:fit-content;
-    padding:1.5em;
-    font-size: 1.1em;
-    border-radius: 20px;
-    text-align: center;
-    margin-left: 1em;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: var(--primary-color);
-    margin-right: 10%;
+main {
+  /* height: 64vh; */
 }
 
-body{
-    position:relative;
+#account {
+  transition: all 0.3s ease-in-out;
+  width: fit-content;
+  padding: 1.5em;
+  font-size: 1.1em;
+  border-radius: 20px;
+  text-align: center;
+  margin-left: 1em;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--primary-color);
+  margin-right: 10%;
 }
-footer{
-    position:relative;
-    height:20vh;
-    width:100%;
-}
-footer{
-    margin-top: 20vh !important;
-}
-footer #listFooter{
-    margin-top: -20px;
-    background-color: #291B44;
-    display: flex;
-    justify-content: center;
-}
-footer ul{
-    list-style: none;
 
-    color: white;
+body {
+  position: relative;
 }
-footer ul li{
-    padding:1em;
-    cursor: pointer;
+footer {
+  position: relative;
+  height: 20vh;
+  width: 100%;
+}
+footer {
+  margin-top: 20vh !important;
+}
+footer #listFooter {
+  margin-top: -20px;
+  background-color: #291b44;
+  display: flex;
+  justify-content: center;
+}
+footer ul {
+  list-style: none;
+
+  color: white;
+}
+footer ul li {
+  padding: 1em;
+  cursor: pointer;
 }
