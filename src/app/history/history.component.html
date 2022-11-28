@@ -1,2 +1,7 @@
 <h1>Historique du groupe : {{ this.group.name }}</h1>
-<div>{{ this.group }}</div>
+
+<div>
+  <ul>
+    <li *ngFor="let expense of this.listExpense">{{ expense.title }}</li>
+  </ul>
+</div>
