@@ -16,8 +16,8 @@ export class GestionGroupComponent implements OnInit {
   idGroup: string = "";
   group!: GroupeExpense;
   ExpenseForm: UntypedFormGroup;
-  user: any = "{}";
-  listUser: any[] = [];
+  user!: { email: string; expiry: Int32Array; id: string; token: string; username: string; };
+  listUser: { username: string, id: string }[] = [];
   allLoaded: boolean = false;
   teamUse: string[] = [];
   errorForm: boolean = false;
@@ -38,15 +38,15 @@ export class GestionGroupComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user') || "{}");
     this.route.queryParams.subscribe(params => {
       this.idGroup = params['group'];
-      this.http.get<any>(this.requestService.url + 'group/' + this.idGroup).subscribe(result => {
+      this.http.get<GroupeExpense>(this.requestService.url + 'group/' + this.idGroup).subscribe(result => {
         console.log(result);
         this.group = result;
-        this.group.listMoney.forEach((element: { user1: String, user2: String }) => {
-          this.http.get<any>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
+        this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
+          this.http.get<string>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
             this.listUser.push({ username: result, id: element.user1 });
             element.user1 = result;
           });
-          this.http.get<any>(this.requestService.url + 'user/' + element.user2).subscribe(result => {
+          this.http.get<string>(this.requestService.url + 'user/' + element.user2).subscribe(result => {
             this.listUser.push({ username: result, id: element.user2 });
             element.user2 = result;
           });
@@ -60,7 +60,7 @@ export class GestionGroupComponent implements OnInit {
     this.ExpenseForm.value.utilisateurConcerned = this.teamUse;
     console.log(this.ExpenseForm.value);
     console.log(this.user.username);
-    this.http.post<any>(this.requestService.url + 'groups/addExpenses', {
+    this.http.post<string>(this.requestService.url + 'groups/addExpenses', {
       group: this.idGroup,
       name: this.ExpenseForm.value.name,
       description: this.ExpenseForm.value.description,
@@ -69,7 +69,6 @@ export class GestionGroupComponent implements OnInit {
       date: new Date(),
       owner: this.user.id
     }).subscribe(result => {
-      console.log(result);
       this.ngOnInit();
       this.addExpense = false;
       this.formExpenseCss.nativeElement.className = "";

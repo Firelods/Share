@@ -1,19 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto+Mono&family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto+Mono&family=Work+Sans&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   /* font-weight: 700; */
 }
 
 :root {
-  --primary-color: #F9961F;
+  --primary-color: #f9961f;
   --primary-light: #ecb571;
   --secondary-color: #eb8f1f;
   --tertiary-color: #000;
-
 }
 
 ul {
@@ -21,32 +20,35 @@ ul {
 }
 
 .buttonShadow:hover {
-  transform: translateY(10px);
+  transform: translateY(5px);
   background-color: var(--secondary-color);
   color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  -webkit-transform: translateY(10px);
-  -moz-transform: translateY(10px);
-  -ms-transform: translateY(10px);
-  -o-transform: translateY(10px);
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -o-transform: translateY(5px);
 }
 
 .buttonShadow {
-
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
 }
 
 .petitButtonShadow {
-    background: linear-gradient(145deg, #ffa121, #e0871c);
-    box-shadow: 5px 5px 9px #ef901e,    -5px -5px 9px #ff9c20;
-    transition: box-shadow 0.1s linear;
-    -webkit-transition: box-shadow 0.1s linear;
-    -moz-transition: box-shadow 0.1s linear;
-    -ms-transition: box-shadow 0.1s linear;
-    -o-transition: box-shadow 0.1s linear;
+  background: linear-gradient(145deg, #ffa121, #e0871c);
+  box-shadow: 5px 5px 9px #ef901e, -5px -5px 9px #ff9c20;
+  transition: box-shadow 0.1s linear;
+  -webkit-transition: box-shadow 0.1s linear;
+  -moz-transition: box-shadow 0.1s linear;
+  -ms-transition: box-shadow 0.1s linear;
+  -o-transition: box-shadow 0.1s linear;
 }
 
-.petitButtonShadow:hover{
-  box-shadow: 2px 2px 9px #ef901e,
-  -2px -2px 9px #ff9c20;
+.petitButtonShadow:hover {
+  box-shadow: 2px 2px 9px #ef901e, -2px -2px 9px #ff9c20;
 }

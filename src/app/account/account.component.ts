@@ -45,7 +45,7 @@ export class AccountComponent implements OnInit {
           participants: []
         });
         element.listUsers.forEach((user: string) => {
-          this.http.get<any>(this.requestService.url + 'user/' + user).subscribe(result => {
+          this.http.get<string>(this.requestService.url + 'user/' + user).subscribe(result => {
             console.log(user);
             console.log(result);
 

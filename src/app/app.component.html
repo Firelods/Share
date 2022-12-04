@@ -1,17 +1,29 @@
 <header>
-  <div routerLink="/" id="titre">{{title}}</div>
-  <div *ngIf="this.user==null||this.user==''" id="logReg">
-    <div routerLink="/login" id="login">Se Connecter {{this.user}}</div>
-    <div routerLink="/register" id="register">S'inscrire</div>
+  <div routerLink="/" id="titre">{{ title }}</div>
+  <div *ngIf="this.user == null || this.user == ''" id="logReg">
+    <div routerLink="/login" id="login">Se Connecter {{ this.user }}</div>
+    <div routerLink="/register" id="register">S'Inscrire</div>
   </div>
-  <div *ngIf="!this.user==null||this.user!=''" routerLink="/account" class="buttonShadow" id="account">Votre Compte</div>
+  <div
+    *ngIf="!this.user == null || this.user != ''"
+    routerLink="/account"
+    class="buttonShadow"
+    id="account"
+  >
+    Votre Compte
+  </div>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
 <div id="separate"></div>
-<footer><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300">
-    <path fill="#291B44" fill-opacity="1" d="M 0 50 Q 700 250 1450 50 L 1450 300 L 0 300 Z"></path>
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300">
+    <path
+      fill="#291B44"
+      fill-opacity="1"
+      d="M 0 50 Q 700 250 1450 50 L 1450 300 L 0 300 Z"
+    ></path>
   </svg>
   <div id="listFooter">
     <ul>
@@ -19,6 +31,16 @@
       <li>Un bug ? Une suggestion</li>
       <li>Condition Générales</li>
     </ul>
-    <ul><li>Qui Sommes nous ?</li><li>S'inscrire à la newsletter</li><li><input type="text" name="emailNewsletter" placeholder="contact@gmail.com"></li></ul>
+    <ul>
+      <li>Qui Sommes nous ?</li>
+      <li>S'inscrire à la newsletter</li>
+      <li>
+        <input
+          type="text"
+          name="emailNewsletter"
+          placeholder="contact@gmail.com"
+        />
+      </li>
+    </ul>
   </div>
 </footer>

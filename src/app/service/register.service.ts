@@ -9,7 +9,7 @@ import { RequestService } from './request.service';
 export class RegisterService {
   constructor(private http: HttpClient, private requestService: RequestService) { }
   register(username: string, password: string, email: string): Observable<String> {
-    return this.http.post<any>(this.requestService.url + "auth/signup", { username: username, password: password, email: email }).pipe(map(
+    return this.http.post<{ email: string; expiry: Int32Array; id: string; accessToken: string; username: string; message: string }>(this.requestService.url + "auth/signup", { username: username, password: password, email: email }).pipe(map(
       (response) => {
         console.log(response);
 

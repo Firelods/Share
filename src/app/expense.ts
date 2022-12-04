@@ -3,7 +3,7 @@ export interface Expense {
     title: String,
     description: String,
     date: String,
-    amount: Number,
+    amount: { $numberDecimal: Number },
     owner: ObjectId,
     listUsers: [ObjectId],
 }

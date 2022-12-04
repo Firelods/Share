@@ -1,7 +1,7 @@
 export interface GroupeExpense {
 
-    name: String,
-    listUsers: [String],
-    listMoney: [{ user1: String, user2: String, amount: { $numberDecimal: Number } }],
-    history: [{ _idExpense: String }]
+    name: string,
+    listUsers: [string],
+    listMoney: [{ user1: string, user2: string, amount: { $numberDecimal: Number } }],
+    history: [{ _idExpense: string }]
 }

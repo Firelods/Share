@@ -2,6 +2,10 @@
 
 <div>
   <ul>
-    <li *ngFor="let expense of this.listExpense">{{ expense.title }}</li>
+    <li *ngFor="let expense of this.listExpense">
+      <div id="titre">{{ expense.title }}</div>
+      <div id="date">{{ expense.date.slice(0, 10) }}</div>
+      <div id="montant">{{ expense.amount.$numberDecimal }} €</div>
+    </li>
   </ul>
 </div>

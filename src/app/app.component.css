@@ -17,7 +17,9 @@ header {
 
 #logReg {
   display: flex;
+  margin-top: 2.5vh;
   margin-right: 15vw;
+  height: 8vh;
 }
 
 #logReg div {
@@ -58,6 +60,7 @@ main {
 }
 
 #account {
+  margin-top: 2.5vh;
   transition: all 0.3s ease-in-out;
   width: fit-content;
   padding: 1.5em;

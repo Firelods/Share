@@ -1,0 +1,25 @@
+ul {
+  display: flex;
+  width: 75vw;
+  flex-wrap: wrap;
+  gap: 2vw;
+  margin: 0 auto;
+  margin-top: 5vh;
+}
+
+li {
+  background-color: var(--primary-color);
+  border-radius: 29px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 10vw;
+  height: 15vh;
+  justify-content: space-between;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  padding: 1em;
+}
+#titre {
+  font-weight: bold;
+}

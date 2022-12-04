@@ -20,9 +20,8 @@ export class LoginService {
 
   constructor(private http: HttpClient, private requestService: RequestService) { }
   login(username: string, password: string): Observable<String> {
-    return this.http.post<any>(this.requestService.url + "auth/signin", { username: username, password: password }).pipe(map(
+    return this.http.post<{ email: string; expiry: Int32Array; id: string; accessToken: string; username: string; message: string }>(this.requestService.url + "auth/signin", { username: username, password: password }).pipe(map(
       (response) => {
-        console.log(response);
         if (response.username) {
           localStorage.setItem('user', JSON.stringify({
             id: response.id,
@@ -33,21 +32,14 @@ export class LoginService {
           }));
           localStorage.setItem('id_token', response.accessToken);
           localStorage.setItem('expires_at', (new Date().getTime() + (1000 * 3)).toString());
-          console.log("connected");
           return "connected";
         }
         else {
-          console.log(response.message);
-
-          if (response.message) {
-            return response.message;
-          }
+          return response.message;
         }
       },
 
     ), catchError((err) => {
-      console.log(err);
-
       return of(err.error.message)
     }));
   }
@@ -55,7 +47,6 @@ export class LoginService {
   getUser() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
-      console.log("expired");
       localStorage.removeItem('user');
       return null;
     }
@@ -79,8 +70,6 @@ export class LoginService {
     return JSON.parse(localStorage.getItem('user') || '{}').id || '';
   }
   disconnect() {
-    console.log("disconnect");
-
     localStorage.removeItem('user');
   }
 }

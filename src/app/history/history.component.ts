@@ -14,7 +14,7 @@ import { Expense } from '../expense';
 export class HistoryComponent implements OnInit {
   group!: GroupeExpense;
   groupId: String = "";
-  listExpenseId: any = [];
+  listExpenseId: String[] = [];
   listExpense: Expense[] = [];
   constructor(private router: Router, private location: Location, private http: HttpClient, private requestService: RequestService) { }
 
