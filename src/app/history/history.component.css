@@ -3,8 +3,9 @@ ul {
   width: 75vw;
   flex-wrap: wrap;
   gap: 2vw;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 5vh;
+  justify-content: space-between;
 }
 
 li {
@@ -20,6 +21,15 @@ li {
 
   padding: 1em;
 }
+
 #titre {
   font-weight: bold;
+}
+
+#divHistory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

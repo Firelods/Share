@@ -11,7 +11,7 @@ header {
   /* background-color: aqua; */
   display: flex;
   justify-content: space-between;
-  height: 7vh;
+  /* height: 7vh; */
   font-weight: 700;
 }
 
@@ -51,6 +51,7 @@ header {
   background-color: #291b44;
   color: white;
 }
+
 #register:hover {
   background-color: #54388d !important;
 }
@@ -79,26 +80,39 @@ main {
 body {
   position: relative;
 }
+
 footer {
   position: relative;
   height: 20vh;
   width: 100%;
 }
+
 footer {
-  margin-top: 20vh !important;
+  /* margin-top: 20vh !important; */
 }
+
 footer #listFooter {
   margin-top: -20px;
   background-color: #291b44;
   display: flex;
   justify-content: center;
 }
+
 footer ul {
   list-style: none;
 
   color: white;
 }
+
 footer ul li {
   padding: 1em;
   cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  #account {
+    padding: 0.75em;
+  }
+
 }

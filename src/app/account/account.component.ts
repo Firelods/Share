@@ -32,35 +32,23 @@ export class AccountComponent implements OnInit {
   setNbgroups(): void {
     this.http.get<GroupeExpense[]>(this.requestService.url + this.idUser + '/groups').subscribe(result => {
       this.nbGroups = result.length;
-      console.log(result);
-      var i = 0;
       let resultParsed = JSON.parse(JSON.stringify(result));
       resultParsed.forEach((element: {
         listUsers: string[]; name: string; _id: string;
       }) => {
-
+        var listUser: string[] = [];
+        element.listUsers.forEach((user: string) => {
+          this.http.get<string>(this.requestService.url + 'user/' + user).subscribe(result => {
+            listUser.push(result)
+          });
+        });
         this.groupNames.push({
           nameGroup: element.name,
           idGroup: element._id,
-          participants: []
+          participants: listUser
         });
-        element.listUsers.forEach((user: string) => {
-          this.http.get<string>(this.requestService.url + 'user/' + user).subscribe(result => {
-            console.log(user);
-            console.log(result);
-
-            this.groupNames[i].participants.push(result)
-          });
-          // this.userService.getUser(user);
-          console.log(user);
-
-        });
-        i++;
       });
-
-
     });
-    // this.groupNames.shift();
   }
 
 

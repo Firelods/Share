@@ -13,12 +13,14 @@ h2 {
   margin-top: 2em;
 }
 
-#ajoutExpense {
+.headerButtons div {
+  position: relative;
   padding: 2em;
   background-color: var(--primary-color);
   width: fit-content;
   border-radius: 15px;
   cursor: pointer;
+  height: fit-content;
 }
 
 ul#dette {
@@ -52,6 +54,7 @@ ul#dette {
   height: 32px;
   transition: transform 0.3s ease;
   transform: scale(1.3);
+  cursor: pointer;
 }
 
 .close:hover {
@@ -106,8 +109,10 @@ button:disabled {
   color: white;
   margin: 0 auto;
   /*width:50%;
-  */ /*margin-top: 10vh;
-  */ /*background-color: rgb(236, 236, 236);
+  */
+  /*margin-top: 10vh;
+  */
+  /*background-color: rgb(236, 236, 236);
   */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
   padding: 5vw;
@@ -129,10 +134,12 @@ button:disabled {
   -ms-transition: visibility 0s, opacity 0.3s ease;
   -o-transition: visibility 0s, opacity 0.3s ease;
 }
+
 #formExpense.activated {
   opacity: 1;
   visibility: visible;
 }
+
 #formExpense div ul {
   margin-left: 15%;
 }
@@ -234,6 +241,7 @@ h2 {
   border: 0;
   transition: all 0.2s ease;
 }
+
 .divInfos input[type="text"]:focus {
   outline: none;
   --spread: 20px;
@@ -324,7 +332,7 @@ button:disabled {
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container input:checked~.checkmark {
   background: black;
   box-shadow: -10px -10px var(--spread) 0px #fbb662,
     0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #f9961f,
@@ -340,7 +348,7 @@ button:disabled {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container input:checked~.checkmark:after {
   display: inline-block;
 }
 
@@ -362,6 +370,96 @@ button:disabled {
 
 .headerButtons {
   display: flex;
-  width: 25vw;
+  width: 80%;
   justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+  #dashboard {
+    display: flex;
+    margin-left: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .headerButtons {
+    width: 100%;
+  }
+
+  ul#dette {
+    width: 90%;
+    margin: 0;
+    display: flex;
+    gap: 5vw;
+    flex-direction: column;
+  }
+
+  #user1,
+  #user2,
+  #amount {
+    width: fit-content;
+
+  }
+
+  .detteList {
+    margin: 0;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+
+  button div {
+    display: none;
+  }
+
+  .button {
+    padding: 1em;
+  }
+
+  .button__svg {
+    height: 200%;
+  }
+}
+
+#link {}
+
+#share {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#copied {
+  /* display: none; */
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border-radius: 15px;
+  opacity: 0;
+}
+
+@keyframes visible2sec {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
 }

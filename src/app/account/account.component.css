@@ -23,6 +23,7 @@
 
 #group {
   margin-top: 3vh;
+  width: 100%;
 }
 
 #nbGroup {
@@ -31,9 +32,9 @@
 
 .nameGroup {
   cursor: pointer;
-  width: 10vw;
+  width: 100%;
   height: max-content;
-  margin: 2em;
+  /* margin: 2em; */
   padding: 1em;
   background-color: var(--primary-color);
   border-radius: 30px;
@@ -52,6 +53,7 @@
   padding: 0.5em;
   font-size: 0.9em;
 }
+
 #deconnexion {
   /*margin: 0 auto;
   */
@@ -67,10 +69,32 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
+
+#deconnexion:hover {
+  background-color: rgba(255, 0, 0, 0.822);
+  box-shadow: 5px 5px 10px #aa1e1e, -5px -5px 10px #961111;
+}
+
 #mainPageAccount {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#listGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* nowrap */
+  flex-wrap: nowrap;
+  gap: 5vw;
+}
+
+#listGroup li {
+  width: 50%;
+
 }

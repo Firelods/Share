@@ -1,78 +1,84 @@
-#loginForm{
-    margin:0 auto;
-    width:50%;
-    margin-top: 10vh;
-    background-color: rgb(236, 236, 236);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
-    padding:5vw;
-    border-radius: 15px;
+#loginForm {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 10vh;
+  background-color: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
+  padding: 5vw;
+  border-radius: 15px;
 }
 
-h2{
-    margin-bottom:5vh;
+h2 {
+  margin-bottom: 5vh;
 }
 
-.divInfos label{
-    display: block;
-}
-.divInfos{
-    margin-bottom: 5vh;
-}
-.divInfos input{
-    height:4vh;
-    width:35%;
-    margin-left:15%;
-    border-radius: 10px;
-    background-color:rgb(233, 216, 196) ;
-    border:0;
-    transition:all 0.2s ease;
+.divInfos label {
+  display: block;
 }
 
-button{
-    background-color: rgb(83, 83, 228);
-    padding:2vh;
-    margin-left:45%;
-    border-radius: 30px;
-    font-size: larger;
-    cursor: pointer;
-    color:white;
-    transition:background-color 0.5s linear;
+.divInfos {
+  margin-bottom: 5vh;
 }
 
+.divInfos input {
+  height: 4vh;
+  width: 35%;
+  margin-left: 15%;
+  border-radius: 10px;
+  background-color: rgb(233, 216, 196);
+  border: 0;
+  transition: all 0.2s ease;
+}
 
-button:active:disabled{
-    animation: secousse 0.1s linear 2;
+button {
+  margin-top: 5vh;
+  background-color: rgb(83, 83, 228);
+  padding: 2vh;
+  margin-left: 45%;
+  border-radius: 30px;
+  font-size: larger;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.5s linear;
 }
 
 
-button:disabled{
-    background-color: rgba(255, 0, 0, 0.562);
+button:active:disabled {
+  animation: secousse 0.1s linear 2;
+}
+
+
+button:disabled {
+  background-color: rgba(255, 0, 0, 0.562);
 }
 
 @keyframes secousse {
-    0%{
-        transform:rotate(0)
-    }
-    25%{
-        transform:rotate(10deg)
-    }
-    75%{
-        transform:rotate(-10deg)
-    }
-    100%{
-        transform:rotate(0)
-    }
+  0% {
+    transform: rotate(0)
+  }
+
+  25% {
+    transform: rotate(10deg)
+  }
+
+  75% {
+    transform: rotate(-10deg)
+  }
+
+  100% {
+    transform: rotate(0)
+  }
 }
 
-.divInfos:nth-of-type(2){
-    margin-bottom:0;
+.divInfos:nth-of-type(2) {
+  margin-bottom: 0;
 }
 
-.error{
-    background-color: rgba(255, 0, 0, 0.267);
-    width: fit-content;
-    font-size:0.9em;
-    font-weight: normal;
-    padding:1em;
-    border-radius: 15px;
+.error {
+  background-color: rgba(255, 0, 0, 0.267);
+  width: fit-content;
+  font-size: 0.9em;
+  font-weight: normal;
+  padding: 1em;
+  border-radius: 15px;
 }

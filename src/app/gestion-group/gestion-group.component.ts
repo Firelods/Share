@@ -110,5 +110,14 @@ export class GestionGroupComponent implements OnInit {
     // navigate to history with this.group
     this.router.navigate(['/history'], { state: { group: this.group }, queryParams: { groupId: this.idGroup } });
   }
+  copyShare() {
+    var phrase = "Rejoins mon groupe de dépense sur $hare !http://share.clement-lefevre.fr Renseigne ce code une fois inscrit : "
+    var copyText = document.getElementById("link")!.innerHTML;
+    console.log(phrase + copyText);
 
+    navigator.clipboard.writeText(phrase + copyText);
+
+    document.getElementById("copied")!.style.opacity = "1";
+    document.getElementById("copied")!.style.animation = "visible2sec 2s forwards";
+  }
 }
