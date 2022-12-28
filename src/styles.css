@@ -8,6 +8,10 @@
   /* font-weight: 700; */
 }
 
+body{
+  overflow-x: hidden;
+}
+
 :root {
   --primary-color: #f9961f;
   --primary-light: #ecb571;

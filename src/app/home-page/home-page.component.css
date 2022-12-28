@@ -5,6 +5,10 @@
   height: 10vh;
 }
 
+main{
+  overflow-x: hidden;
+}
+
 main h1 {
   font-family: 'Roboto Mono', monospace;
 }
@@ -46,9 +50,35 @@ h2 {
 
 #friends {
   position: absolute;
-  width: 600px;
+  width: 40vw;
   top: 29vw;
   left: 60vw;
   transform: rotate(351deg);
   z-index: -1;
+}
+
+
+@media (max-width: 768px) {
+  #titreDefilant {
+    margin-left: 5vw;
+    padding-top: 20vh;
+  }
+  h2 {
+    margin-top: 5vh;
+    margin-left: 5vw;
+  }
+  #buttonTry {
+    margin-top: 5vh;
+  }
+  #billet {
+    top: 70vh;
+    left: 70vw;
+  }
+  #friends {
+    top: 65vh;
+    left: 20vw;
+    width: 75vw;
+  }
+
+
 }

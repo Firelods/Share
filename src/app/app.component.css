@@ -1,3 +1,5 @@
+
+
 header #titre {
   font-family: "Kaushan Script", cursive;
   font-size: 4em;
@@ -89,6 +91,7 @@ footer {
 
 footer {
   /* margin-top: 20vh !important; */
+
 }
 
 footer #listFooter {
@@ -114,5 +117,7 @@ footer ul li {
   #account {
     padding: 0.75em;
   }
-
+  #logReg div {
+    font-size: 0.8em;
+  }
 }
