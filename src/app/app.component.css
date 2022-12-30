@@ -1,11 +1,10 @@
-
-
 header #titre {
   font-family: "Kaushan Script", cursive;
   font-size: 4em;
   color: var(--primary-color);
   padding-left: 5vw;
   font-weight: 300;
+  text-shadow: 0.01em 0.01em 20px rgb(167, 104, 22);
 }
 
 header {
@@ -91,7 +90,6 @@ footer {
 
 footer {
   /* margin-top: 20vh !important; */
-
 }
 
 footer #listFooter {
@@ -111,7 +109,6 @@ footer ul li {
   padding: 1em;
   cursor: pointer;
 }
-
 
 @media (max-width: 768px) {
   #account {

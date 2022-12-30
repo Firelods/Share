@@ -8,8 +8,9 @@
   /* font-weight: 700; */
 }
 
-body{
+body {
   overflow-x: hidden;
+  position: relative;
 }
 
 :root {

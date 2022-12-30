@@ -1,0 +1,17 @@
+<div
+  *ngIf="message.text"
+  [ngClass]="{
+    alert: message,
+    'alert-success': message.type === 'success',
+    'alert-danger': message.type === 'error',
+    'alert-warning': message.type === 'warning',
+    'alert-info': message.type === 'info'
+  }"
+>
+  <div>
+    {{ message.text }}
+    <span (click)="closeMessage()" style="float: right; cursor: pointer">
+      Close</span
+    >
+  </div>
+</div>

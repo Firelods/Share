@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GroupeExpense } from '../groupe-expense';
+import { AlertService } from '../service/alert.service';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
 import { UserService } from '../service/user.service';
@@ -17,7 +18,7 @@ export class AccountComponent implements OnInit {
   nbGroups = 0;
   addGroup = false;
   groupNames: [{ nameGroup: string; idGroup: string; participants: string[]; }] = [{ nameGroup: '', idGroup: '', participants: [] }];
-  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService, private router: Router) { }
+  constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService, private router: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.groupNames = [{ nameGroup: '', idGroup: '', participants: [] }];
@@ -28,18 +29,16 @@ export class AccountComponent implements OnInit {
 
   }
   disconnect(): void {
+    this.alertService.error("Vous êtes déconnecté", 5000, true);
     this.loginService.disconnect();
     //route to login
     this.router.navigate(['/login'])
   }
 
   setNbgroups(): void {
-    this.http.get<GroupeExpense[]>(this.requestService.url + this.idUser + '/groups').subscribe(result => {
+    this.http.get<GroupeExpense[]>(this.requestService.url + this.idUser + '/groups').subscribe((result) => {
       this.nbGroups = result.length;
-      let resultParsed = JSON.parse(JSON.stringify(result));
-      resultParsed.forEach((element: {
-        listUsers: string[]; name: string; _id: string;
-      }) => {
+      result.forEach((element: GroupeExpense) => {
         var listUser: string[] = [];
         element.listUsers.forEach((user: string) => {
           this.http.get<string>(this.requestService.url + 'user/' + user).subscribe(result => {
@@ -60,15 +59,12 @@ export class AccountComponent implements OnInit {
 
     if (this.addGroup) {
       this.addGroup = false;
-      console.log("test");
-      console.log((document.getElementById("join") as HTMLInputElement).value);
-
       this.http.post(this.requestService.url + 'user/addGroup', { tag: (document.getElementById("join") as HTMLInputElement).value, user: this.idUser }).subscribe(
         (response: any) => {
+          if (response.message == "Group not found") {
+            alert("Group not found");
+          }
           this.ngOnInit();
-
-          console.log(response.message);
-
         }
       );
 
@@ -78,5 +74,7 @@ export class AccountComponent implements OnInit {
       this.addGroup = true;
     }
   }
-
+  clickAlert(): void {
+    this.alertService.info("test", 50000, true);
+  }
 }

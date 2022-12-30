@@ -14,6 +14,7 @@ import { AccountComponent } from './account/account.component';
 import { GestionGroupComponent } from './gestion-group/gestion-group.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { HistoryComponent } from './history/history.component';
+import { AlertComponent } from './alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { HistoryComponent } from './history/history.component';
     AccountComponent,
     GestionGroupComponent,
     HistoryComponent,
+    AlertComponent,
 
   ],
   imports: [

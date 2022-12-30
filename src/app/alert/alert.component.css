@@ -1,0 +1,36 @@
+.alert {
+  right: 0;
+  position: sticky;
+  /* width: fit-content; */
+}
+.alert > div {
+  position: absolute;
+  padding: 0.85rem 1.5rem;
+  border-radius: 4px;
+  background: rgb(243, 31, 31);
+
+  border: 1px solid transparent;
+  top: 10px;
+  right: 10px;
+  width: fit-content;
+}
+.alert-danger > div {
+  color: #fff;
+  background-color: #f66e84;
+  border-color: #f55f78;
+}
+.alert-success > div {
+  color: #fff;
+  background-color: #45ccb1;
+  border-color: #39c9ac;
+}
+.alert-warning > div {
+  color: #fff;
+  background-color: #ffc241;
+  border-color: #ffbd31;
+}
+.alert-info > div {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}

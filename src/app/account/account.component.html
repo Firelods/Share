@@ -1,6 +1,7 @@
 <div id="mainPageAccount">
   <div id="hello">Bonjour {{ this.user }} !</div>
   <div id="container">
+    <button (click)="clickAlert()">Click me</button>
     <div id="nbGroup">
       Vous faites partie de {{ this.nbGroups }} groupe<span
         *ngIf="this.nbGroups > 1"
