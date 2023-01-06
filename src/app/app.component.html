@@ -1,24 +1,22 @@
 <app-alert></app-alert>
 <header>
-  <div routerLink="/" id="titre">{{ title }}</div>
-  <div *ngIf="this.user == null || this.user == ''" id="logReg">
-    <div routerLink="/login" id="login">Se Connecter {{ this.user }}</div>
-    <div routerLink="/register" id="register">S'Inscrire</div>
+  <div class="headerDivTop">
+    <div routerLink="/" id="titre">{{ title }}</div>
+    <div routerLink="/account" id="account">Mon Compte</div>
+    <div class="groups">Mes groupes</div>
+    <div class="notification">Notifications</div>
   </div>
-  <div
-    *ngIf="!this.user == null || this.user != ''"
-    routerLink="/account"
-    class="buttonShadow"
-    id="account"
-  >
-    Votre Compte
+  <div class="headerDivBottom">
+    <div class="credits">Crédits</div>
+    <div class="aPropos">A propos</div>
+    <div class="disconnect" (click)="disconnect()">Déconnexion</div>
   </div>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
 <div id="separate"></div>
-<footer>
+<!-- <footer>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300">
     <path
       fill="#291B44"
@@ -44,4 +42,4 @@
       </li>
     </ul>
   </div>
-</footer>
+</footer> -->

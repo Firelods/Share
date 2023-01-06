@@ -8,11 +8,13 @@ import { LoginService } from './service/login.service';
 export class AppComponent {
   title = '$hare';
   user = null;
-  constructor(private loginService: LoginService) {  }
+  constructor(private loginService: LoginService) { }
   ngDoCheck() {
-    this.user = this.loginService.getUser();    
+    this.user = this.loginService.getUser();
   }
-
+  disconnect() {
+    this.loginService.disconnect();
+  }
 }
 
 

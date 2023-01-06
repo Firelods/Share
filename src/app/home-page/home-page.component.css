@@ -1,30 +1,27 @@
 #titreDefilant {
   padding-top: 25vh;
   margin-left: 10vw;
-  width: fit-content;
+  width: 80%;
   height: 10vh;
 }
 
-main{
-  overflow-x: hidden;
-}
-
 main h1 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 h2 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 1.5em;
   font-weight: bold;
   margin-left: 20vw;
 }
 
 #buttonTry {
-  margin: 0 auto;
+  border: none;
+  color: white;
   margin-top: 10vh;
   width: fit-content;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   padding: 2vw;
   font-size: 1.8em;
   border-radius: 25px;
@@ -32,53 +29,7 @@ h2 {
   transition: all 0.3s ease-in-out;
 }
 
-
-
 #buttonTry span {
-  font-family: 'Kaushan Script', cursive;
+  font-family: "Kaushan Script", cursive;
   font-size: 1.2em;
-}
-
-
-#billet {
-  position: absolute;
-  top: 76vh;
-  left: 77vw;
-  width: 100px;
-  z-index: -1;
-}
-
-#friends {
-  position: absolute;
-  width: 40vw;
-  top: 29vw;
-  left: 60vw;
-  transform: rotate(351deg);
-  z-index: -1;
-}
-
-
-@media (max-width: 768px) {
-  #titreDefilant {
-    margin-left: 5vw;
-    padding-top: 20vh;
-  }
-  h2 {
-    margin-top: 5vh;
-    margin-left: 5vw;
-  }
-  #buttonTry {
-    margin-top: 5vh;
-  }
-  #billet {
-    top: 70vh;
-    left: 70vw;
-  }
-  #friends {
-    top: 65vh;
-    left: 20vw;
-    width: 75vw;
-  }
-
-
 }

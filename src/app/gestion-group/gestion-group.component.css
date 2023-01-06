@@ -1,465 +1,147 @@
 h1 {
-  margin-top: 2em;
-  margin-left: 10vw;
-  font-weight: 900;
+  margin: 1em;
+  width: 70%;
+  font-size: 2.6em;
+  font-weight: 700;
 }
-
-#dashboard {
-  margin-top: 5vh;
-  margin-left: 5vw;
+.changeName {
+  width: 70%;
 }
-
-h2 {
-  margin-top: 2em;
-}
-
-.headerButtons div {
-  position: relative;
-  padding: 2em;
-  background-color: var(--primary-color);
-  width: fit-content;
-  border-radius: 15px;
-  cursor: pointer;
-  height: fit-content;
-}
-
-ul#dette {
-  background-color: rgba(236, 235, 235, 0.692);
-  width: 50vw;
-  margin: 0 auto;
-  border-radius: 7px;
-  padding: 10px;
-  border-radius: 12px;
-
-  box-shadow: inset 7px 7px 18px #acacac, inset -7px -7px 18px #ffffff;
-}
-
-.detteList {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1em;
-  background-color: var(--primary-color);
-  margin: 2em;
-  border-radius: 10px;
-  transition: transform 0.2s ease;
-}
-
-.close {
-  position: absolute;
-  right: 32px;
-  top: 32px;
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s ease;
-  transform: scale(1.3);
-  cursor: pointer;
-}
-
-.close:hover {
-  transform: rotate(90deg) scale(1.3);
-}
-
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 2px;
-  background-color: rgb(255, 255, 255);
-}
-
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
-}
-
-.detteList:hover {
-  transform: scale(1.1);
-}
-
-#user1,
-#user2 {
-  width: 5vw;
-}
-
-button {
-  display: flex;
-  justify-content: center;
-  padding: 2em;
-  width: 17vw;
-  max-width: 230px;
-  font-size: 1.2em;
-}
-
-button:disabled {
-  background-color: red;
-}
-
-.button:disabled {
-  opacity: 0.2;
-}
-
-#formExpense {
-  color: white;
-  margin: 0 auto;
-  /*width:50%;
-  */
-  /*margin-top: 10vh;
-  */
-  /*background-color: rgb(236, 236, 236);
-  */
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
-  padding: 5vw;
-  border-radius: 15px;
-  /*display: none;
-  */
-  position: absolute;
-  width: 60%;
-  visibility: hidden;
-  opacity: 0;
-  height: 80%;
-  background-color: rgba(29, 29, 29, 0.938);
-  top: 10%;
-  left: 15%;
-  z-index: 99;
-  transition: visibility 0s, opacity 0.3s ease;
-  -webkit-transition: visibility 0s, opacity 0.3s ease;
-  -moz-transition: visibility 0s, opacity 0.3s ease;
-  -ms-transition: visibility 0s, opacity 0.3s ease;
-  -o-transition: visibility 0s, opacity 0.3s ease;
-}
-
-#formExpense.activated {
-  opacity: 1;
-  visibility: visible;
-}
-
-#formExpense div ul {
-  margin-left: 15%;
-}
-
-#formExpense div ul li {
-  display: flex;
-  align-items: center;
-}
-
-#formExpense div ul li span {
-  font-weight: 900;
-  cursor: pointer;
-}
-
-/* only animate if the device supports hover */
-@media (hover: hover) {
-  #creditcard {
-    /*  set start position */
-
-    transform: translateX(200px) translateY(300px) scale(8);
-    transition: transform 0.1s ease-in-out;
-    /*  set transition for mouse enter & exit */
-  }
-
-  button:hover #creditcard {
-    transform: translateX(200px) translateY(50px) scale(8);
-    transition: transform 0.2s ease-in-out;
-    /*  overide transition for mouse enter */
-  }
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-0.25rem);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.button:hover .button__text span {
-  transform: translateY(-0.25rem);
-  transition: transform 0.2s ease-in-out;
-}
-
-.button:disabled:hover {
-  cursor: not-allowed;
-}
-
-.button {
-  border: none;
-  outline: none;
-  background-color: purple;
-  padding: 1rem 90px 1rem 2rem;
-  position: relative;
-  border-radius: 8px;
-  letter-spacing: 0.7px;
-  background-color: #5086bd;
-  color: #fff;
-  font-size: 21px;
-  font-family: "Lato", sans-serif;
-  cursor: pointer;
-  box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
-}
-
-.button:active {
-  transform: translateY(1px);
-}
-
-.button__svg {
-  position: absolute;
-  overflow: visible;
-  bottom: 6px;
-  right: -0.5rem;
-  height: 140%;
-}
-
-h2 {
-  margin-bottom: 5vh;
-}
-
-.divInfos {
-  margin-bottom: 5vh;
-}
-
-.divInfos input[type="text"],
-.divInfos select {
-  padding-left: 1em;
-  height: 4vh;
-  width: 35%;
-  margin-left: 15%;
-  border-radius: 10px;
-  background-color: rgb(233, 216, 196);
-  border: 0;
-  transition: all 0.2s ease;
-}
-
-.divInfos input[type="text"]:focus {
-  outline: none;
-  --spread: 20px;
-  box-shadow: -10px -10px var(--spread) 0px #fbb662,
-    0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #f9961f,
-    10px 0 var(--spread) 0px #f9961f, 10px 10px var(--spread) 0px #f77737,
-    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
-}
-
-.divInfos select {
-  height: max-content;
-  padding: 1em;
-}
-
-#userList {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 25vh;
-}
-
-button {
-  background-color: rgb(83, 83, 228);
-  padding: 2vh;
-  /* margin-left:45%; */
-  border-radius: 30px;
-  font-size: larger;
-  cursor: pointer;
-  color: white;
-  transition: background-color 0.5s linear;
-}
-
-button:active:disabled {
-  animation: secousse 0.1s linear 2;
-}
-
-button:disabled {
-  background-color: rgba(255, 0, 0, 0.562);
-}
-
-@keyframes secousse {
-  0% {
-    transform: rotate(0);
-  }
-
-  25% {
-    transform: rotate(10deg);
-  }
-
-  75% {
-    transform: rotate(-10deg);
-  }
-
-  100% {
-    transform: rotate(0);
-  }
-}
-
-/* Hide the default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.container {
-  display: flex;
-  position: relative;
-  cursor: pointer;
-  font-size: 25px;
-  user-select: none;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: relative;
-  display: inline-block;
-  top: 0;
-  left: 0;
-  height: 1.3em;
-  width: 1.3em;
-  background: black;
-  border-radius: 50px;
-  transition: all 0.7s;
-  --spread: 20px;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark {
-  background: black;
-  box-shadow: -10px -10px var(--spread) 0px #fbb662,
-    0 -10px var(--spread) 0px #fccb8f, 10px -10px var(--spread) 0px #f9961f,
-    10px 0 var(--spread) 0px #fd1d1d, 10px 10px var(--spread) 0px #f77737,
-    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked~.checkmark:after {
-  display: inline-block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 0.45em;
-  top: 0.25em;
-  width: 0.25em;
-  height: 0.5em;
-  border: solid #f0f0f0;
-  border-width: 0 0.15em 0.15em 0;
-  transform: rotate(45deg);
-}
-
-.itemUsername {
-  margin-left: 1em;
-  font-size: 15px;
-}
-
-.headerButtons {
-  display: flex;
+.imgGroup {
+  margin-left: 2em;
   width: 80%;
-  justify-content: space-between;
+  max-width: 430px;
 }
-
-
-@media (max-width: 768px) {
-  #dashboard {
-    display: flex;
-    margin-left: 0;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .headerButtons {
-    width: 100%;
-  }
-
-  ul#dette {
-    width: 90%;
-    margin: 0;
-    display: flex;
-    gap: 5vw;
-    flex-direction: column;
-  }
-
-  #user1,
-  #user2,
-  #amount {
-    width: fit-content;
-
-  }
-
-  .detteList {
-    margin: 0;
-    padding-left: 0.2em;
-    padding-right: 0.2em;
-  }
-
-  button div {
-    display: none;
-  }
-
-  .button {
-    padding: 1em;
-  }
-
-  .button__svg {
-    height: 200%;
-  }
-}
-
-#link {}
-
-#share {
+.leftPart {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-
-#copied {
-  /* display: none; */
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 2em;
-  font-weight: bold;
-  justify-content: center;
+}
+.tagCopy {
+  display: flex;
   align-items: center;
-  z-index: 1;
-  border-radius: 15px;
-  opacity: 0;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.codeGroup {
+  background: #ffbf85;
+  border-radius: 30px;
+  color: black;
+  font-weight: 700;
+  width: 50%;
+  padding: 1em;
+}
+#copy {
+  padding: 0.7em;
+  border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+}
+.textCodeGroup {
+  margin-top: 15vh;
+  margin-bottom: 2vh;
+  font-size: 1.5em;
+  width: 80%;
+}
+.textCodeGroup div {
+  width: 70%;
 }
 
-@keyframes visible2sec {
-  0% {
-    opacity: 0;
-  }
+.shareGroup {
+  margin-top: 5vh;
+  border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+  background-color: var(--secondary-color);
+  width: 90%;
+  font-size: 1.3em;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  10% {
-    opacity: 1;
-  }
+.rightPart {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.navGroup {
+  /* margin-top: 5vh; */
+  display: flex;
+  font-size: 120%;
+  width: 95%;
+  justify-content: space-around;
+}
+.navGroup div:first-child {
+  font-weight: 700;
+}
+.recapMainDiv {
+  width: 90%;
+  background-position: 0px 0px;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff 0px,
+    /* Have one solid white area */ #ffffff 10vh,
+    /* at the top (255px high). */ #c4c7c9 11vh,
+    /* Then begin the gradient at 255px */ #ffffff 100%
+      /* and end it at 100% (= body's height). */
+  );
+  box-shadow: -25px 25px 34px #d65025;
+  border-radius: 20px;
+  height: 85%;
+  color: black;
+}
+.titleRecap {
+  font-weight: 600;
+  font-size: 1.4em;
+  padding: 1em;
+}
+.recapDiv {
+  width: 100%;
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  overflow-y: scroll;
+}
+.recapDiv ul {
+  width: 80%;
+  padding: 8px;
+  gap: 20px;
+  background-color: var(--box-color);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dette {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  padding-bottom: 1em;
+  box-shadow: 0px 24px 5px -24px #a2a2a2;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  100% {
-    opacity: 0;
-  }
-
+.dette div.money div {
+  display: inline;
+}
+.amount {
+  color: var(--primary-color);
 }

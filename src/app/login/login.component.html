@@ -1,30 +1,32 @@
-<div id="loginForm">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2>Veuillez vous connecter</h2>
-    <div class="divInfos">
-      <label for="username">Utilisateur</label
-      ><input
-        type="text"
-        name="username"
-        id="username"
-        formControlName="username"
-        required
-      />
-    </div>
-    <div class="divInfos">
-      <label for="password">Mot de passe</label
-      ><input
-        type="password"
-        name="password"
-        id="password"
-        formControlName="password"
-        required
-      />
-    </div>
-    <div [@inOutAnimation] class="error" *ngIf="this.errorLogin">
-      {{ this.errorLogin }}
-    </div>
-    <!-- <div (click)="onClick()">CLIQUER</div> -->
-    <button [disabled]="!loginForm.valid">Connexion</button>
-  </form>
+<div class="mainPage">
+  <div id="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Connexion</h2>
+      <div class="divInfos">
+        <label for="username">Utilisateur</label
+        ><input
+          type="text"
+          name="username"
+          id="username"
+          formControlName="username"
+          required
+        />
+      </div>
+      <div class="divInfos">
+        <label for="password">Mot de passe</label
+        ><input
+          type="password"
+          name="password"
+          id="password"
+          formControlName="password"
+          required
+        />
+      </div>
+      <div [@inOutAnimation] class="error" *ngIf="this.errorLogin">
+        {{ this.errorLogin }}
+      </div>
+      <!-- <div (click)="onClick()">CLIQUER</div> -->
+      <button [disabled]="!loginForm.valid">Connexion</button>
+    </form>
+  </div>
 </div>

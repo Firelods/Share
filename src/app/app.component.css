@@ -1,120 +1,45 @@
 header #titre {
   font-family: "Kaushan Script", cursive;
-  font-size: 4em;
-  color: var(--primary-color);
-  padding-left: 5vw;
+  font-size: 2em;
+  color: white;
+  padding: 2vh 0px;
+  /* padding-left: 5vw; */
   font-weight: 300;
-  text-shadow: 0.01em 0.01em 20px rgb(167, 104, 22);
+  text-shadow: 0.01em 0.01em 20px white;
 }
 
 header {
-  padding: 1vw;
-  /* background-color: aqua; */
+  font-size: 24px;
+  width: 13vw;
+  height: 100vh;
+  color: white;
+  box-shadow: inset -138px 0px 98px -83px #d83f0b;
+  background-color: var(--primary-color);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 2vw;
   /* height: 7vh; */
-  font-weight: 700;
+  font-weight: 600;
 }
-
-#logReg {
-  display: flex;
-  margin-top: 2.5vh;
-  margin-right: 15vw;
-  height: 8vh;
+.headerDivTop {
 }
-
-#logReg div {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-  width: fit-content;
-  padding: 1em;
-  font-size: 0.9em;
-  border-radius: 20px;
-  text-align: center;
-  margin-left: 1em;
-  cursor: pointer;
+.headerDivTop,
+.headerDivBottom {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  /* height: 30vh; */
+  gap: 48px;
+  padding: 2vh 0px;
 }
 
-#logReg div:hover {
-  background-color: var(--secondary-color);
-  color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-#login {
-  background-color: var(--primary-color);
-}
-
-#register {
-  background-color: #291b44;
-  color: white;
-}
-
-#register:hover {
-  background-color: #54388d !important;
-}
+/* Style of Main */
 
 main {
-  /* height: 64vh; */
-}
-
-#account {
-  margin-top: 2.5vh;
-  transition: all 0.3s ease-in-out;
-  width: fit-content;
-  padding: 1.5em;
-  font-size: 1.1em;
-  border-radius: 20px;
-  text-align: center;
-  margin-left: 1em;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   background-color: var(--primary-color);
-  margin-right: 10%;
-}
-
-body {
-  position: relative;
-}
-
-footer {
-  position: relative;
-  height: 20vh;
-  width: 100%;
-}
-
-footer {
-  /* margin-top: 20vh !important; */
-}
-
-footer #listFooter {
-  margin-top: -20px;
-  background-color: #291b44;
-  display: flex;
-  justify-content: center;
-}
-
-footer ul {
-  list-style: none;
-
+  width: 85vw;
   color: white;
-}
-
-footer ul li {
-  padding: 1em;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  #account {
-    padding: 0.75em;
-  }
-  #logReg div {
-    font-size: 0.8em;
-  }
 }
