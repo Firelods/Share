@@ -1,15 +1,17 @@
 #loginForm {
   margin: 0 auto;
   width: 50%;
-  margin-top: 10vh;
-  background-color: rgb(236, 236, 236);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px;
+  /* margin-top: 10vh; */
+  background: #fffbf7;
+  box-shadow: -25px 25px 34px #d65025;
   padding: 5vw;
   border-radius: 15px;
+  color: black;
 }
 
 h2 {
   margin-bottom: 5vh;
+  font-size: 2.5em;
 }
 
 .divInfos label {
@@ -24,12 +26,24 @@ h2 {
   height: 4vh;
   width: 35%;
   margin-left: 15%;
+  padding-left: 2%;
   border-radius: 10px;
   background-color: rgb(233, 216, 196);
   border: 0;
   transition: all 0.2s ease;
+  box-shadow: -5px 5px 17px rgb(168, 168, 168);
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+.divInfos input:focus-visible {
+  outline: none;
 }
 
+.divInfos input:focus {
+  box-shadow: -5px 5px 17px #d65025;
+}
 button {
   margin-top: 5vh;
   background-color: rgb(83, 83, 228);
@@ -40,13 +54,12 @@ button {
   cursor: pointer;
   color: white;
   transition: background-color 0.5s linear;
+  border: none;
 }
-
 
 button:active:disabled {
   animation: secousse 0.1s linear 2;
 }
-
 
 button:disabled {
   background-color: rgba(255, 0, 0, 0.562);
@@ -54,19 +67,19 @@ button:disabled {
 
 @keyframes secousse {
   0% {
-    transform: rotate(0)
+    transform: rotate(0);
   }
 
   25% {
-    transform: rotate(10deg)
+    transform: rotate(10deg);
   }
 
   75% {
-    transform: rotate(-10deg)
+    transform: rotate(-10deg);
   }
 
   100% {
-    transform: rotate(0)
+    transform: rotate(0);
   }
 }
 
