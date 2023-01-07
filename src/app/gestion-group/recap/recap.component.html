@@ -1,0 +1,22 @@
+<div class="recapMainDiv">
+  <div class="titleRecap">Récapitulatif</div>
+  <div class="recapDiv">
+    <ul>
+      <li class="dette" *ngFor="let dette of group.listMoney">
+        <div class="user">
+          <img src="../../assets/graySquare.png" alt="imgProfile" />
+          <div class="name">{{ dette.user2 }}</div>
+        </div>
+        <div class="money">
+          doit
+          <div class="amount">{{ dette.amount.$numberDecimal }} €</div>
+          à
+        </div>
+        <div class="user">
+          <img src="../../assets/graySquare.png" alt="imgProfile" />
+          <div class="name">{{ dette.user1 }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

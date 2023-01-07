@@ -16,7 +16,7 @@ body {
 :root {
   --primary-color: #fc8741;
   --primary-light: #ffbf85;
-  --secondary-color: #ff7a00;
+  --secondary-color: #f36100;
   --box-color: #fffbf7;
   --grey: #d9d9d9;
 }
@@ -30,6 +30,13 @@ app-root {
 }
 app-gestion-group {
   display: flex;
+}
+app-recap,
+app-history {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  height: 85%;
 }
 .buttonShadow {
   background: var(--secondary-color);

@@ -12,25 +12,16 @@ import { RequestService } from '../service/request.service';
   styleUrls: ['./gestion-group.component.css']
 })
 export class GestionGroupComponent implements OnInit {
-  addExpense: boolean = false;
   idGroup: string = "";
   group!: GroupeExpense;
-  ExpenseForm: UntypedFormGroup;
   user!: { email: string; expiry: Int32Array; id: string; token: string; username: string; };
-  listUser: { username: string, id: string }[] = [];
+  listUser: Map<String, String> = new Map<String, String>();
   allLoaded: boolean = false;
-  teamUse: string[] = [];
   errorForm: boolean = false;
-  @ViewChild('formApparition', { static: false })
-  public formExpenseCss!: ElementRef;
+
   // utilisateur: string = "";
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private requestService: RequestService) {
-    this.ExpenseForm = new UntypedFormGroup({
-      name: new UntypedFormControl(''),
-      amount: new UntypedFormControl(''),
-      description: new UntypedFormControl(''),
-      utilisateurConcerned: new FormArray([])
-    })
+  constructor(private router: Router, private route: ActivatedRoute, public http: HttpClient, public requestService: RequestService) {
+
   }
 
   ngOnInit(): void {
@@ -43,11 +34,11 @@ export class GestionGroupComponent implements OnInit {
         this.group = result;
         this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
           this.http.get<string>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
-            this.listUser.push({ username: result, id: element.user1 });
+            this.listUser.set(element.user1, result);
             element.user1 = result;
           });
           this.http.get<string>(this.requestService.url + 'user/' + element.user2).subscribe(result => {
-            this.listUser.push({ username: result, id: element.user2 });
+            this.listUser.set(element.user2, result);
             element.user2 = result;
           });
         });
@@ -56,56 +47,12 @@ export class GestionGroupComponent implements OnInit {
     }
     );
   }
-  onSubmit() {
-    this.ExpenseForm.value.utilisateurConcerned = this.teamUse;
-    console.log(this.ExpenseForm.value);
-    console.log(this.user.username);
-    this.http.post<string>(this.requestService.url + 'groups/addExpenses', {
-      group: this.idGroup,
-      name: this.ExpenseForm.value.name,
-      description: this.ExpenseForm.value.description,
-      amount: this.ExpenseForm.value.amount,
-      listUsers: this.ExpenseForm.value.utilisateurConcerned,
-      date: new Date(),
-      owner: this.user.id
-    }).subscribe(result => {
-      this.ngOnInit();
-      this.addExpense = false;
-      this.formExpenseCss.nativeElement.className = "";
-    })
-  }
-  ngAfterViewInit() {
-    console.log(this.formExpenseCss);
-  }
+
   addUserToList(event: any) {
-    this.listUser.push(event.target.value);
+    // this.listUser.push(event.target.value);
   }
-  clickAddExpense() {
-    this.addExpense = true;
 
-    console.log(this.formExpenseCss);
 
-    this.formExpenseCss.nativeElement.className = "activated";
-    this.listUser = [...new Set(this.listUser)];
-    this.listUser = this.listUser.filter((value, index) => {
-      const _value = JSON.stringify(value);
-      return index === this.listUser.findIndex(obj => {
-        return JSON.stringify(obj) === _value;
-      });
-    });
-    console.log(this.listUser);
-  }
-  selectTeamUse(user: any) {
-    user = user.target.name;
-    if (this.teamUse.includes(user)) {
-      this.teamUse.splice(this.teamUse.indexOf(user), 1);
-    }
-    else {
-      this.teamUse.push(user);
-    }
-    console.log(this.teamUse);
-
-  }
   showHistory() {
     // navigate to history with this.group
     this.router.navigate(['/history'], { state: { group: this.group }, queryParams: { groupId: this.idGroup } });
@@ -119,5 +66,14 @@ export class GestionGroupComponent implements OnInit {
 
     document.getElementById("copied")!.style.opacity = "1";
     document.getElementById("copied")!.style.animation = "visible2sec 2s forwards";
+  }
+  boldNav(event: any) {
+    var nav = document.getElementsByClassName("navGroupElem");
+    console.log(nav);
+
+    for (let i = 0; i < nav.length; i++) {
+      nav[i].classList.remove("bold");
+    }
+    event.target.classList.add("bold");
   }
 }

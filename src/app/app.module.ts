@@ -13,8 +13,10 @@ import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { GestionGroupComponent } from './gestion-group/gestion-group.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
-import { HistoryComponent } from './history/history.component';
+import { HistoryComponent } from './gestion-group/history/history.component';
 import { AlertComponent } from './alert/alert.component';
+import { RecapComponent } from './gestion-group/recap/recap.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +27,12 @@ import { AlertComponent } from './alert/alert.component';
     GestionGroupComponent,
     HistoryComponent,
     AlertComponent,
+    RecapComponent,
 
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,

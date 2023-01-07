@@ -1,0 +1,87 @@
+<span style="display: none">
+  Historique du groupe : {{ this.group.listUsers.length }}
+</span>
+
+<div class="historyMainDiv">
+  <div class="titleHistory">Historique des dépenses</div>
+  <div class="divHistory">
+    <ul>
+      <li class="expense" *ngFor="let expense of this.listExpense">
+        <div class="leftExpense">
+          <div class="title">{{ expense.title }}</div>
+          <div class="user">
+            de {{ listUser.get(expense.owner.toString()) }}
+          </div>
+          <div>
+            pour
+            <span *ngFor="let user of expense.listUsers; let i = index"
+              >{{ listUser.get(user.toString())
+              }}<span class="virgule" *ngIf="i < expense.listUsers.length - 1"
+                >,
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="date">{{ expense.date.slice(0, 10) }}</div>
+        <div class="montant">{{ expense.amount.$numberDecimal }} €</div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- <div id="formExpense" #formApparition>
+  <form [formGroup]="ExpenseForm" (ngSubmit)="onSubmit()">
+    <h2>Saisir les informations de la Dépense</h2>
+    <div class="divInfos">
+      <label for="name">Nom</label
+      ><input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+        required
+      />
+    </div>
+    <div class="divInfos">
+      <label for="amount">Montant</label
+      ><input
+        type="text"
+        name="amount"
+        id="amount"
+        formControlName="amount"
+        required
+      />
+    </div>
+    <div class="divInfos" id="userList">
+      <label for="listUser">Utilisateurs concernés</label>
+      <label class="container" *ngFor="let item of this.listUser"
+        ><input
+          type="checkbox"
+          (change)="selectTeamUse($event)"
+          name="{{ item.id }}"
+          id="{{ item.username }}"
+        />
+        <div class="checkmark"></div>
+        <div class="itemUsername">{{ item.username }}</div>
+      </label>
+    </div>
+    <div class="divInfos">
+      <label for="description">Description</label
+      ><input
+        type="text"
+        name="description"
+        id="description"
+        formControlName="description"
+        required
+      />
+    </div>
+    <div [@inOutAnimation] class="error" *ngIf="this.errorForm">
+      Mauvais Mot de passe
+    </div>
+    <a
+      (click)="this.formExpenseCss.nativeElement.className = ''"
+      class="close"
+    ></a>
+     <div (click)="onClick()">CLIQUER</div>
+    <button [disabled]="!ExpenseForm.valid">Ajouter la dépense</button>
+  </form>
+</div> -->

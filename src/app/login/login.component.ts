@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     var result = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(Auth => {
       console.log(Auth);
 
-      if (Auth == "connected") { this.router.navigate(['/account']); } else { this.errorLogin = Auth; }
+      if (Auth == "connected") { this.router.navigate(['/groups']); } else { this.errorLogin = Auth; }
     });
   }
 }

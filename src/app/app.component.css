@@ -35,7 +35,10 @@ header {
   gap: 48px;
   padding: 2vh 0px;
 }
-
+.headerDivTop div,
+.headerDivBottom div {
+  cursor: pointer;
+}
 /* Style of Main */
 
 main {
