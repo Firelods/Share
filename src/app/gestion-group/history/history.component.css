@@ -16,6 +16,9 @@
 }
 
 .titleHistory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-weight: 600;
   font-size: 1.4em;
   padding: 1em;
@@ -55,4 +58,22 @@
 }
 .virgule:nth-child(-1) {
   display: none;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  color: var(--primary-color);
+  font-size: 2em;
+  cursor: pointer;
+}
+form > button:disabled {
+  filter: grayscale(1);
+}
+form > button {
+  border: none;
+  transition: all ease-in-out 0.5s;
+}
+.leftExpense {
+  display: flex;
+  flex-direction: column;
 }

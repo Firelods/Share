@@ -1,7 +1,8 @@
+import { slideInAnimation } from './../animation';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ChildrenOutletContexts, Router } from '@angular/router';
 import { GroupeExpense } from '../groupe-expense';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
@@ -9,18 +10,21 @@ import { RequestService } from '../service/request.service';
 @Component({
   selector: 'app-gestion-group',
   templateUrl: './gestion-group.component.html',
-  styleUrls: ['./gestion-group.component.css']
+  styleUrls: ['./gestion-group.component.css'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class GestionGroupComponent implements OnInit {
   idGroup: string = "";
   group!: GroupeExpense;
   user!: { email: string; expiry: Int32Array; id: string; token: string; username: string; };
-  listUser: Map<String, String> = new Map<String, String>();
+  listUser: Map<string, string> = new Map<string, string>();
   allLoaded: boolean = false;
   errorForm: boolean = false;
 
   // utilisateur: string = "";
-  constructor(private router: Router, private route: ActivatedRoute, public http: HttpClient, public requestService: RequestService) {
+  constructor(private router: Router, private route: ActivatedRoute, public http: HttpClient, public requestService: RequestService, private contexts: ChildrenOutletContexts) {
 
   }
 
@@ -67,13 +71,21 @@ export class GestionGroupComponent implements OnInit {
     document.getElementById("copied")!.style.opacity = "1";
     document.getElementById("copied")!.style.animation = "visible2sec 2s forwards";
   }
-  boldNav(event: any) {
+  boldNav(event: any, place: string) {
     var nav = document.getElementsByClassName("navGroupElem");
     console.log(nav);
 
     for (let i = 0; i < nav.length; i++) {
       nav[i].classList.remove("bold");
     }
-    event.target.classList.add("bold");
+    if (place == "history") {
+      document.getElementById("history")!.classList.add("bold");
+    } else {
+
+      event.target.classList.add("bold");
+    }
+  }
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

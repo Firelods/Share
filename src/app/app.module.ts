@@ -10,24 +10,26 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
-import { AccountComponent } from './account/account.component';
+import { GroupsComponent } from './groups/groups.component';
 import { GestionGroupComponent } from './gestion-group/gestion-group.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { HistoryComponent } from './gestion-group/history/history.component';
 import { AlertComponent } from './alert/alert.component';
 import { RecapComponent } from './gestion-group/recap/recap.component';
 import { CommonModule } from '@angular/common';
+import { AccountGestionComponent } from './account-gestion/account-gestion.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LoginComponent,
     RegisterComponent,
-    AccountComponent,
+    GroupsComponent,
     GestionGroupComponent,
     HistoryComponent,
     AlertComponent,
     RecapComponent,
+    AccountGestionComponent,
 
   ],
   imports: [

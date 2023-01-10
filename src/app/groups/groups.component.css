@@ -14,11 +14,11 @@
   border-radius: 30px;
   color: black;
   box-shadow: -25px 25px 34px #d65025;
-  transition: transform 300ms ease-in-out;
-  -webkit-transition: transform 300ms ease-in-out;
-  -moz-transition: transform 300ms ease-in-out;
-  -ms-transition: transform 300ms ease-in-out;
-  -o-transition: transform 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
 }
 .nameGroup:hover {
   transform: scale(1.1);
@@ -26,6 +26,7 @@
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
+  box-shadow: -12px 12px 34px #d65025;
 }
 .nameGroup div {
   font-size: 1.5em;

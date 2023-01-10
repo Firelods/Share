@@ -1,3 +1,4 @@
+import { AlertService } from './alert.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators'
@@ -18,7 +19,7 @@ export class LoginService {
   loggedIn: boolean = false;
 
 
-  constructor(private http: HttpClient, private requestService: RequestService) { }
+  constructor(private http: HttpClient, private requestService: RequestService, private alertService: AlertService) { }
   login(username: string, password: string): Observable<String> {
     return this.http.post<{ email: string; expiry: Int32Array; id: string; accessToken: string; username: string; message: string }>(this.requestService.url + "auth/signin", { username: username, password: password }).pipe(map(
       (response) => {
@@ -47,11 +48,11 @@ export class LoginService {
   getUser() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
-      localStorage.removeItem('user');
+      this.disconnect();
       return null;
     }
 
-    // localStorage.removeItem('user');  
+    // localStorage.removeItem('user');
     return JSON.parse(localStorage.getItem('user') || '{}').username || '';
   }
 
@@ -62,14 +63,15 @@ export class LoginService {
   getUserId() {
     const itemString = localStorage.getItem('user');
     if (new Date().getTime() > (JSON.parse(itemString || '{}')).expiry) {
-      localStorage.removeItem('user');
+      this.disconnect();
       return null;
     }
 
-    // localStorage.removeItem('user');  
+    // localStorage.removeItem('user');
     return JSON.parse(localStorage.getItem('user') || '{}').id || '';
   }
   disconnect() {
     localStorage.removeItem('user');
+    this.alertService.warning("Vous avez été déconnecté");
   }
 }

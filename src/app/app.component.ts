@@ -15,6 +15,7 @@ export class AppComponent {
   disconnect() {
     this.loginService.disconnect();
   }
+
 }
 
 

@@ -4,6 +4,7 @@ import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angu
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { tap } from 'rxjs/operators'
+import { AlertService } from '../service/alert.service';
 
 @Component({
   animations: [
@@ -36,7 +37,7 @@ import { tap } from 'rxjs/operators'
 export class LoginComponent implements OnInit {
   loginForm: UntypedFormGroup;
   errorLogin: String = "";
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private loginService: LoginService, private alertService: AlertService) {
     this.loginForm = new UntypedFormGroup({
       username: new UntypedFormControl(''),
       password: new UntypedFormControl('')
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
     var result = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(Auth => {
       console.log(Auth);
 
-      if (Auth == "connected") { this.router.navigate(['/groups']); } else { this.errorLogin = Auth; }
+      if (Auth == "connected") { this.router.navigate(['/groups']); this.alertService.success("Vous êtes connecté !") } else { this.errorLogin = Auth; }
     });
   }
 }

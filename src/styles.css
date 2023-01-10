@@ -35,8 +35,8 @@ app-recap,
 app-history {
   display: flex;
   width: 100%;
-  height: fit-content;
-  height: 85%;
+
+  height: 95%;
 }
 .buttonShadow {
   background: var(--secondary-color);

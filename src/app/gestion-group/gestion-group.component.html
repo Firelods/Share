@@ -55,20 +55,23 @@
       class="navGroupElem bold"
       routerLink="/gestion-group/recap"
       [queryParams]="{ group: group._id }"
-      (click)="boldNav($event)"
+      (click)="boldNav($event, 'accueil')"
     >
       Accueil
     </div>
     <div
+      id="history"
       class="navGroupElem"
       routerLink="/gestion-group/history"
       [queryParams]="{ group: group._id }"
-      (click)="boldNav($event)"
+      (click)="boldNav($event, 'accueil')"
     >
       Dépenses
     </div>
-    <div class="navGroupElem" (click)="boldNav($event)">Infos</div>
-    <div class="navGroupElem" (click)="boldNav($event)">Options</div>
+    <div class="navGroupElem" (click)="boldNav($event, 'accueil')">Infos</div>
+    <div class="navGroupElem" (click)="boldNav($event, 'accueil')">Options</div>
   </div>
-  <router-outlet></router-outlet>
+  <div class="divRouter" [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+  </div>
 </div>

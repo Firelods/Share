@@ -9,10 +9,10 @@ import { RequestService } from '../service/request.service';
 import { UserService } from '../service/user.service';
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  templateUrl: './groups.component.html',
+  styleUrls: ['./groups.component.css']
 })
-export class AccountComponent implements OnInit {
+export class GroupsComponent implements OnInit {
   user = "";
   idUser = "";
   nbGroups = 0;
@@ -75,6 +75,6 @@ export class AccountComponent implements OnInit {
     }
   }
   clickAlert(): void {
-    this.alertService.info("test", 50000, true);
+    this.alertService.info("Ceci est votre groupe", 50000, true);
   }
 }

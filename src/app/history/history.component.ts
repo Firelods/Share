@@ -20,18 +20,10 @@ export class HistoryComponent implements OnInit {
   groupId: String = "";
   listExpenseId: String[] = [];
   listExpense: Expense[] = [];
-  ExpenseForm: UntypedFormGroup;
   user!: { email: string; expiry: Int32Array; id: string; token: string; username: string; };
-  teamUse: string[] = [];
-  @ViewChild('formApparition', { static: false })
-  public formExpenseCss!: ElementRef;
+
   constructor(private router: Router, private location: Location, private http: HttpClient, private requestService: RequestService) {
-    this.ExpenseForm = new UntypedFormGroup({
-      name: new UntypedFormControl(''),
-      amount: new UntypedFormControl(''),
-      description: new UntypedFormControl(''),
-      utilisateurConcerned: new FormArray([])
-    })
+
   }
 
   ngOnInit(): void {
@@ -54,48 +46,5 @@ export class HistoryComponent implements OnInit {
 
 
   }
-  clickAddExpense() {
-    this.addExpense = true;
 
-    console.log(this.formExpenseCss);
-
-    this.formExpenseCss.nativeElement.className = "activated";
-    this.listUser = [...new Set(this.listUser)];
-    this.listUser = this.listUser.filter((value, index) => {
-      const _value = JSON.stringify(value);
-      return index === this.listUser.findIndex(obj => {
-        return JSON.stringify(obj) === _value;
-      });
-    });
-    console.log(this.listUser);
-  }
-  onSubmit() {
-    this.ExpenseForm.value.utilisateurConcerned = this.teamUse;
-    console.log(this.ExpenseForm.value);
-    console.log(this.user.username);
-    this.http.post<string>(this.requestService.url + 'groups/addExpenses', {
-      group: this.group._id,
-      name: this.ExpenseForm.value.name,
-      description: this.ExpenseForm.value.description,
-      amount: this.ExpenseForm.value.amount,
-      listUsers: this.ExpenseForm.value.utilisateurConcerned,
-      date: new Date(),
-      owner: this.user.id
-    }).subscribe(result => {
-      this.ngOnInit();
-      this.addExpense = false;
-      this.formExpenseCss.nativeElement.className = "";
-    })
-  }
-  selectTeamUse(user: any) {
-    user = user.target.name;
-    if (this.teamUse.includes(user)) {
-      this.teamUse.splice(this.teamUse.indexOf(user), 1);
-    }
-    else {
-      this.teamUse.push(user);
-    }
-    console.log(this.teamUse);
-
-  }
 }

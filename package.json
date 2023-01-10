@@ -17,6 +17,7 @@
     "@angular/forms": "^14.1.2",
     "@angular/platform-browser": "^14.1.2",
     "@angular/platform-browser-dynamic": "^14.1.2",
+    "@angular/pwa": "^0.5.3",
     "@angular/router": "^14.1.2",
     "bson": "^4.7.0",
     "ngx-typed-js": "^2.1.1",
