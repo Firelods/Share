@@ -18,6 +18,12 @@ import { AlertComponent } from './alert/alert.component';
 import { RecapComponent } from './gestion-group/recap/recap.component';
 import { CommonModule } from '@angular/common';
 import { AccountGestionComponent } from './account-gestion/account-gestion.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,7 @@ import { AccountGestionComponent } from './account-gestion/account-gestion.compo
     AlertComponent,
     RecapComponent,
     AccountGestionComponent,
+    LoaderComponent,
 
   ],
   imports: [
@@ -40,9 +47,26 @@ import { AccountGestionComponent } from './account-gestion/account-gestion.compo
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxTypedJsModule
+    NgxTypedJsModule,
+    MatProgressSpinnerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, GestionGroupComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }, GestionGroupComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

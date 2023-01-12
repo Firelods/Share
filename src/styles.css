@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto+Mono&family=Work+Sans&display=swap");
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 * {
   margin: 0;

@@ -1,7 +1,7 @@
 <div class="recapMainDiv">
   <div class="titleRecap">Récapitulatif</div>
   <div class="recapDiv">
-    <ul>
+    <ul *ngIf="loaded">
       <li class="dette" *ngFor="let dette of group.listMoney">
         <div class="user">
           <img src="../../assets/graySquare.png" alt="imgProfile" />

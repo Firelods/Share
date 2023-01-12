@@ -29,12 +29,12 @@ export class GestionGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // initialise a empty groupExpense
+    this.group = new GroupeExpense();
     this.user = JSON.parse(localStorage.getItem('user') || "{}");
     this.route.queryParams.subscribe(params => {
       this.idGroup = params['group'];
       this.http.get<GroupeExpense>(this.requestService.url + 'group/' + this.idGroup).subscribe(result => {
-        console.log(result);
         this.group = result;
         this.group.listMoney.forEach((element: { user1: string, user2: string }) => {
           this.http.get<string>(this.requestService.url + 'user/' + element.user1).subscribe(result => {
