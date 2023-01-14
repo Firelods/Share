@@ -1,6 +1,4 @@
-<span style="display: none">
-  Historique du groupe : {{ this.group.listUsers.length }}
-</span>
+<!-- <span> Historique du groupe : {{ this.group.listUsers.length }} </span> -->
 
 <div class="historyMainDiv">
   <div class="titleHistory">
@@ -14,7 +12,12 @@
 
   <div class="divHistory">
     <ul>
-      <form [formGroup]="ExpenseForm" class="expense" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="ExpenseForm"
+        #formApparition
+        class="expense"
+        (ngSubmit)="onSubmit()"
+      >
         <div class="leftExpense">
           <input
             class="title"
@@ -25,15 +28,16 @@
             placeholder="Nom de la dépense"
             required
           />
-          <input
-            type="text"
-            class="user"
-            name="owner"
-            id="owner"
-            formControlName="owner"
-            placeholder="Payeur"
-            required
-          />
+          <mat-select placeholder="Payeur" name="item">
+            <mat-option *ngFor="let item of this.teamUse" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
+          <mat-select placeholder="Participants" name="item" [multiple]="true">
+            <mat-option *ngFor="let item of this.teamUse" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
         </div>
 
         <input
@@ -41,6 +45,7 @@
           name="amount"
           id="amount"
           formControlName="amount"
+          placeholder="Montant"
           required
         />
 

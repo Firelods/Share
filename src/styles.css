@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto+Mono&family=Work+Sans&display=swap");
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
   margin: 0;
@@ -212,4 +212,11 @@ app-history {
   font-weight: 100;
   font-style: italic;
   font-display: swap;
+}
+
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background: #ff8100;
 }

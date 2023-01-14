@@ -23,6 +23,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { environment } from '../environments/environment';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
     {

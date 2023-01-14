@@ -1,11 +1,13 @@
+import { Observable } from 'rxjs';
 import { slideInAnimation } from './../animation';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, ChildrenOutletContexts, Router } from '@angular/router';
 import { GroupeExpense } from '../groupe-expense';
 import { LoginService } from '../service/login.service';
 import { RequestService } from '../service/request.service';
+import { Expense } from '../expense';
 
 @Component({
   selector: 'app-gestion-group',
@@ -17,6 +19,8 @@ import { RequestService } from '../service/request.service';
 })
 export class GestionGroupComponent implements OnInit {
   idGroup: string = "";
+  listExpenseId: String[] = [];
+  listExpense: Expense[] = [];
   group!: GroupeExpense;
   user!: { email: string; expiry: Int32Array; id: string; token: string; username: string; };
   listUser: Map<string, string> = new Map<string, string>();
@@ -30,7 +34,7 @@ export class GestionGroupComponent implements OnInit {
 
   ngOnInit(): void {
     // initialise a empty groupExpense
-    this.group = new GroupeExpense();
+    // this.group = new GroupeExpense();
     this.user = JSON.parse(localStorage.getItem('user') || "{}");
     this.route.queryParams.subscribe(params => {
       this.idGroup = params['group'];
@@ -47,11 +51,20 @@ export class GestionGroupComponent implements OnInit {
           });
         });
         this.allLoaded = true;
+        this.group.history.forEach((value: { _idExpense: String }) => {
+          this.listExpenseId.push(value._idExpense);
+        });
+        this.listExpenseId.forEach((value: String) => {
+          this.http.get<Expense>(this.requestService.url + 'expense/' + value).subscribe(result => {
+            // console.log(result);
+            this.listExpense.push(result);
+          })
+        });
+
       });
     }
     );
   }
-
   addUserToList(event: any) {
     // this.listUser.push(event.target.value);
   }
@@ -88,4 +101,6 @@ export class GestionGroupComponent implements OnInit {
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
+
+
 }

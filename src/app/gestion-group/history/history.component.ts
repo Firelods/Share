@@ -1,5 +1,5 @@
 import { ObjectId } from 'bson';
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Expense } from 'src/app/expense';
 import { GestionGroupComponent } from '../gestion-group.component';
 import { UntypedFormGroup, UntypedFormControl, FormArray } from '@angular/forms';
@@ -9,54 +9,41 @@ import { UntypedFormGroup, UntypedFormControl, FormArray } from '@angular/forms'
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent extends GestionGroupComponent implements OnInit, AfterViewInit {
+export class HistoryComponent extends GestionGroupComponent implements OnInit {
   addExpense: boolean = false;
   ExpenseForm!: UntypedFormGroup;
 
-  listExpenseId: String[] = [];
-  listExpense: Expense[] = [];
+
   teamUse: string[] = [];
 
   @ViewChild('formApparition', { static: false })
   public formExpenseCss!: ElementRef;
   override ngOnInit(): void {
     super.ngOnInit();
-    this.group = this.group;
     this.ExpenseForm = new UntypedFormGroup({
       name: new UntypedFormControl(''),
       amount: new UntypedFormControl(''),
       description: new UntypedFormControl(''),
       utilisateurConcerned: new FormArray([])
     })
-    super.boldNav(null, "history")
+    super.boldNav(null, "history");
   }
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    this.group.history.forEach((value: { _idExpense: String }) => {
-      this.listExpenseId.push(value._idExpense);
-    });
-    this.listExpenseId.forEach((value: String) => {
-      this.http.get<Expense>(this.requestService.url + 'expense/' + value).subscribe(result => {
 
-        this.listExpense.push(result);
-        console.log(this.listExpense);
-      })
-    });
-    this.listExpense.forEach((value: Expense) => {
-      console.log(value);
-    });
-  }
+
   clickAddExpense() {
-    this.addExpense = true;
+    if (this.addExpense) {
+      this.addExpense = false;
+      this.formExpenseCss.nativeElement.className = "expense";
+    }
+    else {
+      this.addExpense = true;
+      this.formExpenseCss.nativeElement.className += " active";
+      this.listUser.forEach((key, value) => {
+        this.teamUse.push(key);
+      });
+    }
 
-    console.log(this.formExpenseCss);
-
-    this.formExpenseCss.nativeElement.className = "activated";
-    this.listUser.forEach((key, value) => {
-      this.teamUse.push(key);
-    });
     console.log(this.teamUse);
   }
   onSubmit() {
@@ -74,7 +61,7 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit, A
     }).subscribe(result => {
       this.ngOnInit();
       this.addExpense = false;
-      this.formExpenseCss.nativeElement.className = "";
+      this.formExpenseCss.nativeElement.className = "expense";
     })
   }
   selectTeamUse(user: any) {
@@ -87,5 +74,10 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit, A
     }
     console.log(this.teamUse);
 
+  }
+  setOwner(user: string) {
+    var inputOwner = document.getElementById("owner") as HTMLInputElement;
+
+    inputOwner.value = user;
   }
 }
