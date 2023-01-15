@@ -28,14 +28,19 @@
             placeholder="Nom de la dépense"
             required
           />
-          <mat-select placeholder="Payeur" name="item">
+          <mat-select formControlName="owner" placeholder="Payeur" name="item">
             <mat-option *ngFor="let item of this.teamUse" [value]="item">
-              {{ item }}
+              {{ this.listUser.get(item) }}
             </mat-option>
           </mat-select>
-          <mat-select placeholder="Participants" name="item" [multiple]="true">
+          <mat-select
+            formControlName="utilisateurConcerned"
+            placeholder="Participants"
+            name="item"
+            [multiple]="true"
+          >
             <mat-option *ngFor="let item of this.teamUse" [value]="item">
-              {{ item }}
+              {{ this.listUser.get(item) }}
             </mat-option>
           </mat-select>
         </div>
@@ -61,7 +66,7 @@
         </button>
       </form>
 
-      <li class="expense" *ngFor="let expense of this.listExpense">
+      <li class="expense" *ngFor="let expense of this.listExpense.reverse()">
         <div class="leftExpense">
           <div class="title">{{ expense.title }}</div>
           <div class="user">

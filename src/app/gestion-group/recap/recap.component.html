@@ -5,7 +5,7 @@
       <li class="dette" *ngFor="let dette of group.listMoney">
         <div class="user">
           <img src="../../assets/graySquare.png" alt="imgProfile" />
-          <div class="name">{{ dette.user2 }}</div>
+          <div class="name">{{ this.listUser.get(dette.user2) }}</div>
         </div>
         <div class="money">
           doit
@@ -14,7 +14,7 @@
         </div>
         <div class="user">
           <img src="../../assets/graySquare.png" alt="imgProfile" />
-          <div class="name">{{ dette.user1 }}</div>
+          <div class="name">{{ this.listUser.get(dette.user1) }}</div>
         </div>
       </li>
     </ul>

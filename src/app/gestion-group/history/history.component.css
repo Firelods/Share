@@ -76,6 +76,7 @@ form > button:disabled {
 }
 form > button {
   border: none;
+  filter: none;
   transition: all ease-in-out 0.5s;
 }
 .leftExpense {

@@ -2,7 +2,7 @@ import { ObjectId } from 'bson';
 import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Expense } from 'src/app/expense';
 import { GestionGroupComponent } from '../gestion-group.component';
-import { UntypedFormGroup, UntypedFormControl, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-history',
@@ -24,7 +24,8 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit {
       name: new UntypedFormControl(''),
       amount: new UntypedFormControl(''),
       description: new UntypedFormControl(''),
-      utilisateurConcerned: new FormArray([])
+      owner: new UntypedFormControl(''),
+      utilisateurConcerned: new FormControl('')
     })
     super.boldNav(null, "history");
   }
@@ -39,45 +40,42 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit {
     else {
       this.addExpense = true;
       this.formExpenseCss.nativeElement.className += " active";
-      this.listUser.forEach((key, value) => {
-        this.teamUse.push(key);
-      });
-    }
+      if (!(this.teamUse.length > 0)) {
+        this.listUser.forEach((key, value) => {
+          this.teamUse.push(value);
+        });
+        console.log(this.teamUse);
+        console.log(this.listUser);
 
-    console.log(this.teamUse);
+
+      }
+    }
   }
   onSubmit() {
-    this.ExpenseForm.value.utilisateurConcerned = this.teamUse;
-    console.log(this.ExpenseForm.value);
-    console.log(this.user.username);
-    this.http.post<string>(this.requestService.url + 'groups/addExpenses', {
+    console.log(this.ExpenseForm.value.utilisateurConcerned);
+    this.http.post<{ message: string }>(this.requestService.url + 'groups/addExpenses', {
       group: this.group._id,
       name: this.ExpenseForm.value.name,
       description: this.ExpenseForm.value.description,
       amount: this.ExpenseForm.value.amount,
       listUsers: this.ExpenseForm.value.utilisateurConcerned,
       date: new Date(),
-      owner: this.user.id
+      owner: this.ExpenseForm.value.owner
     }).subscribe(result => {
-      this.ngOnInit();
-      this.addExpense = false;
-      this.formExpenseCss.nativeElement.className = "expense";
+      // this.ngOnInit();
+      // this.addExpense = false;
+      // this.formExpenseCss.nativeElement.className = "expense";
+      if (result.message = "Expense was registered successfully!") {
+        this.listExpense.push({
+          title: this.ExpenseForm.value.name,
+          description: this.ExpenseForm.value.description,
+          amount: { $numberDecimal: this.ExpenseForm.value.amount },
+          listUsers: this.ExpenseForm.value.utilisateurConcerned,
+          date: new Date().toISOString().split('T')[0],
+          owner: this.ExpenseForm.value.owner
+        })
+      }
+
     })
-  }
-  selectTeamUse(user: any) {
-    user = user.target.name;
-    if (this.teamUse.includes(user)) {
-      this.teamUse.splice(this.teamUse.indexOf(user), 1);
-    }
-    else {
-      this.teamUse.push(user);
-    }
-    console.log(this.teamUse);
-
-  }
-  setOwner(user: string) {
-    var inputOwner = document.getElementById("owner") as HTMLInputElement;
-
-    inputOwner.value = user;
   }
 }

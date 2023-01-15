@@ -13,7 +13,6 @@
       routerLink="/gestion-group/recap"
       [queryParams]="{ group: group.idGroup }"
       *ngFor="let group of groupNames"
-      (click)="clickAlert()"
     >
       <div class="nameGroup buttonShadow" *ngIf="group.nameGroup">
         <img

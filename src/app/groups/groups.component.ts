@@ -74,7 +74,4 @@ export class GroupsComponent implements OnInit {
       this.addGroup = true;
     }
   }
-  clickAlert(): void {
-    this.alertService.info("Ceci est votre groupe", 50000, true);
-  }
 }
