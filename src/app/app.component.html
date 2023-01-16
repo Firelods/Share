@@ -12,7 +12,7 @@
     <div class="disconnect" (click)="disconnect()">Déconnexion</div>
   </div>
 </header>
-<main>
+<main [@routeAnimationsGlobal]="getRouteAnimationData()">
   <app-loader></app-loader>
   <router-outlet></router-outlet>
 </main>

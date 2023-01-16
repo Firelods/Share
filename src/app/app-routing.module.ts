@@ -15,9 +15,9 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard] },
+  { path: 'groups', component: GroupsComponent, canActivate: [AuthGuard], data: { animation: 'groups' } },
   {
-    path: 'gestion-group', component: GestionGroupComponent, canActivate: [AuthGuard], children: [{
+    path: 'gestion-group', component: GestionGroupComponent, canActivate: [AuthGuard], data: { animation: 'group' }, children: [{
       path: 'recap',
       component: RecapComponent, canActivate: [AuthGuard], data: { animation: 'isLeft' }
     },
