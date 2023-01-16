@@ -7,7 +7,7 @@
 
 .nameGroup {
   cursor: pointer;
-  width: 80%;
+  width: fit-content;
   display: flex;
   padding: 1em;
   background-color: #fffbf6;
@@ -42,28 +42,6 @@
   font-size: 0.9em;
 }
 
-#deconnexion {
-  /*margin: 0 auto;
-  */
-  margin-top: 5vh;
-  padding: 1em;
-  border-radius: 15px;
-  background-color: rgba(255, 0, 0, 0.822);
-  box-shadow: 10px 10px 20px #aa1e1e, -10px -10px 20px #961111;
-  display: inline-block;
-  width: fit-content;
-  cursor: pointer;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-#deconnexion:hover {
-  background-color: rgba(255, 0, 0, 0.822);
-  box-shadow: 5px 5px 10px #aa1e1e, -5px -5px 10px #961111;
-}
 .imgGroup {
   width: 40%;
 }
@@ -91,22 +69,26 @@
   /* width: f; */
   display: flex;
   flex-direction: row;
+  width: 50%;
 }
 
 .addGroup {
-  width: fit-content;
   padding: 1em;
-  border-radius: 15px;
-  cursor: pointer;
-  margin-top: 5vh;
+  /* border-radius: 15px; */
+  /* cursor: pointer; */
+  /* margin-top: 5vh; */
 }
 .joinInput {
   width: 100%;
   display: flex;
+  align-items: center;
 }
 .addAnother {
   width: 100%;
-  padding: 1em;
+  padding: 1vw;
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: center;
 }
 .rightPart {
   width: 100%;
@@ -116,8 +98,27 @@
   justify-content: space-evenly;
 }
 
+#join {
+  margin: 1em;
+  font-size: 1em;
+}
+#lastAdd {
+  width: fit-content;
+}
 @media (max-width: 768px) {
   #mainPageAccount {
     margin-top: 10vh;
   }
+}
+
+@media (max-width: 900px) {
+  #listGroup li {
+    width: 80%;
+  }
+}
+.material-symbols-outlined {
+  font-size: 2em;
+}
+li.petitButtonShadow#lastAddLi {
+  width: fit-content;
 }

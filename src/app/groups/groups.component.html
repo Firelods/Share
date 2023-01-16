@@ -31,16 +31,28 @@
         </div>
       </div>
     </li>
+    <li class="petitButtonShadow addGroup" id="lastAddLi">
+      <div class="nameGroup" id="lastAdd">
+        <span
+          (click)="addGroupToUser()"
+          class="addAnother"
+          *ngIf="!this.addGroup"
+        >
+          Ajouter un autre groupe de dépense</span
+        >
+        <div *ngIf="this.addGroup" class="joinInput">
+          <input
+            placeholder="Code du Groupe"
+            type="text"
+            name="join"
+            id="join"
+            (keydown.enter)="addGroupToUser()"
+          />
+          <span (click)="addGroupToUser()" class="material-symbols-outlined">
+            check
+          </span>
+        </div>
+      </div>
+    </li>
   </ul>
-  <div class="petitButtonShadow addGroup">
-    <span (click)="addGroupToUser()" class="addAnother" *ngIf="!this.addGroup">
-      Ajouter un autre groupe de dépense</span
-    >
-    <div *ngIf="this.addGroup" class="joinInput">
-      <input placeholder="Code du Groupe" type="text" name="join" id="join" />
-      <span (click)="addGroupToUser()" class="material-symbols-outlined">
-        check
-      </span>
-    </div>
-  </div>
 </div>
