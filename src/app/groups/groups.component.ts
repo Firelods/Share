@@ -17,6 +17,7 @@ export class GroupsComponent implements OnInit {
   idUser = "";
   nbGroups = 0;
   addGroup = false;
+  addGroupGlobal = false;
   groupNames: [{ nameGroup: string; idGroup: string; participants: string[]; }] = [{ nameGroup: '', idGroup: '', participants: [] }];
   constructor(private loginService: LoginService, private http: HttpClient, private requestService: RequestService, private userService: UserService, private router: Router, private alertService: AlertService) { }
 
@@ -72,6 +73,26 @@ export class GroupsComponent implements OnInit {
     } else {
 
       this.addGroup = true;
+    }
+  }
+  addGroupForUser(): void {
+    console.log(this.addGroupGlobal);
+
+    if (this.addGroupGlobal) {
+      this.addGroupGlobal = false;
+      this.http.post(this.requestService.url + 'groups/addGroup', { name: (document.getElementById("create") as HTMLInputElement).value, currUser: this.idUser }).subscribe(
+        (response: any) => {
+          if (response.message == "GroupExpense was registered successfully!") {
+            // alert("Group not found");
+            this.ngOnInit();
+          }
+        }
+      );
+
+
+    } else {
+
+      this.addGroupGlobal = true;
     }
   }
 }

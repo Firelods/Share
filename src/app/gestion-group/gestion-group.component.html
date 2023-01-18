@@ -71,7 +71,12 @@
     <div class="navGroupElem" (click)="boldNav($event, 'accueil')">Infos</div>
     <div class="navGroupElem" (click)="boldNav($event, 'accueil')">Options</div>
   </div>
-  <div class="divRouter" [@routeAnimations]="getRouteAnimationData()">
+  <div
+    class="divRouter"
+    style="position: relative"
+    [@routeAnimations]="getRouteAnimationData()"
+  >
+    <app-loader></app-loader>
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -60,12 +60,14 @@ export class GestionGroupComponent implements OnInit {
         this.group.history.forEach((value: { _idExpense: String }) => {
           this.listExpenseId.push(value._idExpense);
         });
+        this.listExpenseId.reverse();
         this.listExpenseId.forEach((value: String) => {
           this.http.get<Expense>(this.requestService.url + 'expense/' + value).subscribe(result => {
             // console.log(result);
             this.listExpense.push(result);
           })
         });
+
 
       });
     }

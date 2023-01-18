@@ -54,5 +54,28 @@
         </div>
       </div>
     </li>
+    <li class="petitButtonShadow addGroup" id="lastAddLi">
+      <div class="nameGroup" id="lastAdd">
+        <span
+          (click)="addGroupForUser()"
+          class="addAnother"
+          *ngIf="!this.addGroupGlobal"
+        >
+          Créer un groupe de dépense</span
+        >
+        <div *ngIf="this.addGroupGlobal" class="joinInput">
+          <input
+            placeholder="Nom du Groupe"
+            type="text"
+            name="create"
+            id="create"
+            (keydown.enter)="addGroupForUser()"
+          />
+          <span (click)="addGroupForUser()" class="material-symbols-outlined">
+            check
+          </span>
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
