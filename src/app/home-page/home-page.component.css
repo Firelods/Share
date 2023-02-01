@@ -1,7 +1,7 @@
 #titreDefilant {
   padding-top: 25vh;
   margin-left: 5vw;
-  width: 100%;
+  width: 90%;
   height: 10vh;
   font-size: 2.2em;
   z-index: 5;
@@ -41,4 +41,18 @@ h2 {
   top: 0;
   right: 0;
   z-index: 1;
+}
+
+.mainPage {
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .family {
+    width: 50%;
+  }
+  .typing {
+    font-size: 1.1em;
+    width: 100%;
+  }
 }
