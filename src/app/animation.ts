@@ -11,18 +11,18 @@ export const slideInAnimation =
           left: 0,
           width: '100%'
         })
-      ]),
+      ], { optional: true }),
       query(':enter', [
         style({ right: '100%' })
-      ]),
-      query(':leave', animateChild()),
+      ], { optional: true }),
+      query(':leave', animateChild(), { optional: true }),
       group([
         query(':leave', [
           animate('300ms ease-out', style({ left: '100%', rotate: '45deg' }))
-        ]),
+        ], { optional: true }),
         query(':enter', [
           animate('300ms ease-out', style({ right: '0%' }))
-        ]),
+        ], { optional: true }),
       ]),
     ])]);
 
@@ -37,18 +37,18 @@ export const fadeInAnimation =
           left: 0,
           width: '100%'
         })
-      ]),
+      ], { optional: true }),
       query(':enter', [
         style({ opacity: '0' })
-      ]),
-      query(':leave', animateChild()),
+      ], { optional: true }),
+      query(':leave', animateChild(), { optional: true }),
       group([
         query(':leave', [
           animate('300ms ease-out', style({ opacity: '0' }))
-        ]),
+        ], { optional: true }),
         query(':enter', [
           animate('300ms ease-out', style({ opacity: '1' }))
-        ]),
+        ], { optional: true }),
       ]),
     ]),
     /*

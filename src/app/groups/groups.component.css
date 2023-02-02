@@ -107,13 +107,22 @@
 }
 @media (max-width: 768px) {
   #mainPageAccount {
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
+    overflow-x: scroll;
+    height: auto;
+  }
+  #listGroup {
+    gap: 10vw;
+  }
+  main {
+    height: fit-content;
   }
 }
 
 @media (max-width: 900px) {
   #listGroup li {
-    width: 80%;
+    width: 95%;
+    font-size: 12px;
   }
 }
 .material-symbols-outlined {

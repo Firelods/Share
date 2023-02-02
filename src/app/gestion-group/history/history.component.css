@@ -106,3 +106,37 @@ form.active {
     opacity: 1;
   }
 }
+
+@media (max-width: 768px) {
+  .divHistory {
+    /* height: 100%; */
+  }
+  .divHistory ul {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .expense {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .leftExpense {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title {
+    font-size: 1em;
+  }
+  .material-symbols-outlined {
+    font-size: 1.5em;
+  }
+
+  .mat-option-text {
+    font-size: 0.8em;
+  }
+  #amount {
+    width: 30%;
+  }
+}

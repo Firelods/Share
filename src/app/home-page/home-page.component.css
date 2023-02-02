@@ -55,4 +55,16 @@ h2 {
     font-size: 1.1em;
     width: 100%;
   }
+  #titreDefilant {
+    /* font-size: 1.5em; */
+    padding-top: 10vh;
+  }
+  #buttonTry {
+    padding: 0.5em;
+    font-size: 2.1em;
+  }
+  h2 {
+    font-size: 1.2em;
+    margin-top: 10vh;
+  }
 }

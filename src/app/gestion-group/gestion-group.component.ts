@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { slideInAnimation } from './../animation';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild, AfterContentInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterContentInit, HostListener } from '@angular/core';
 import { FormArray, UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, ChildrenOutletContexts, Router } from '@angular/router';
 import { GroupeExpense } from '../groupe-expense';
@@ -26,14 +26,21 @@ export class GestionGroupComponent implements OnInit {
   listUser: Map<string, string> = new Map<string, string>();
   allLoaded: boolean = false;
   errorForm: boolean = false;
-
+  screenWidth: number = 1000;
   // utilisateur: string = "";
   constructor(private router: Router, private route: ActivatedRoute, public http: HttpClient, public requestService: RequestService, private contexts: ChildrenOutletContexts) {
 
   }
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.screenWidth = window.innerWidth;
 
+  }
   ngOnInit(): void {
     // initialise a empty groupExpense
+    this.screenWidth = window.innerWidth;
+    console.log(this.screenWidth);
+
     this.group = new GroupeExpense();
     this.user = JSON.parse(localStorage.getItem('user') || "{}");
     this.route.queryParams.subscribe(params => {
@@ -84,7 +91,7 @@ export class GestionGroupComponent implements OnInit {
   }
   copyShare() {
     var phrase = "Rejoins mon groupe de dépense sur $hare !http://share.clement-lefevre.fr Renseigne ce code une fois inscrit : "
-    var copyText = document.getElementById("link")!.innerHTML;
+    var copyText = document.getElementsByClassName("codeGroup")![0].innerHTML;
     console.log(phrase + copyText);
 
     navigator.clipboard.writeText(phrase + copyText);
