@@ -1,10 +1,12 @@
 <div id="mainPageAccount">
   <div id="nbGroup">
-    Vo<span *ngIf="this.nbGroups > 1">s</span
-    ><span *ngIf="this.nbGroups == 1">tre</span> groupe<span
-      *ngIf="this.nbGroups > 1"
-      >s</span
-    >
+    <span *ngIf="this.nbGroups > 0">
+      Vo<span *ngIf="this.nbGroups > 1">s</span
+      ><span *ngIf="this.nbGroups == 1">tre</span> groupe<span
+        *ngIf="this.nbGroups > 1"
+        >s</span
+      ></span
+    ><span *ngIf="this.nbGroups == 0">Vous n'avez pas encore de groupe</span>
     de dépenses
   </div>
 

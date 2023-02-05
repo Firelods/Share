@@ -113,6 +113,10 @@
   }
   #listGroup {
     gap: 10vw;
+    padding-bottom: 5vh;
+  }
+  #nbGroup {
+    font-size: 1.5em;
   }
   main {
     height: fit-content;

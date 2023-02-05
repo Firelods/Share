@@ -24,6 +24,9 @@ export class AppComponent {
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
+  isLogged() {
+    return this.loginService.getUser();
+  }
 }
 
 

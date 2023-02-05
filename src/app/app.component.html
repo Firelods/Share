@@ -11,7 +11,9 @@
   <div class="headerDivBottom">
     <div class="credits">Crédits</div>
     <div class="aPropos">A propos</div>
-    <div class="disconnect" (click)="disconnect()">Déconnexion</div>
+    <div *ngIf="this.isLogged()" class="disconnect" (click)="disconnect()">
+      Déconnexion
+    </div>
   </div>
   <svg
     routerLink="/groups"
