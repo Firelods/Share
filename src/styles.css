@@ -62,7 +62,8 @@ app-history {
 @media (max-width: 768px) {
   app-root {
     flex-direction: column;
-    height: 85vh;
+    /* height: 85vh; */
+    height: auto;
     display: block;
   }
   body {

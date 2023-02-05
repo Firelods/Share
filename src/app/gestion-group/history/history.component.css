@@ -139,4 +139,7 @@ form.active {
   #amount {
     width: 30%;
   }
+  .historyMainDiv {
+    height: 90%;
+  }
 }

@@ -60,3 +60,9 @@
 .amount {
   color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+  .recapMainDiv {
+    height: 90%;
+  }
+}
