@@ -60,6 +60,10 @@ app-history {
   outline: none;
 }
 @media (max-width: 768px) {
+  app-recap,
+  app-history {
+    height: 85vh;
+  }
   app-root {
     flex-direction: column;
     /* height: 85vh; */

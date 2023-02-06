@@ -140,6 +140,6 @@ form.active {
     width: 30%;
   }
   .historyMainDiv {
-    height: 90%;
+    /* height: 90%; */
   }
 }
