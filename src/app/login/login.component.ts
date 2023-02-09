@@ -57,4 +57,7 @@ export class LoginComponent implements OnInit {
       if (Auth == "connected") { this.router.navigate(['/groups']); this.alertService.success("Vous êtes connecté !") } else { this.errorLogin = Auth; }
     });
   }
+  loginWithGoogle() {
+    this.loginService.loginWithGoogle();
+  }
 }

@@ -28,6 +28,7 @@
       <!-- <div (click)="onClick()">CLIQUER</div> -->
       <button [disabled]="!loginForm.valid">Connexion</button>
     </form>
+    <button (click)="loginWithGoogle()" class="google-login-btn">Google</button>
     <div class="noAccount">
       <h3>Pas de compte ?</h3>
       <div routerLink="/register">

@@ -24,7 +24,6 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +54,7 @@ import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
   ],
   providers: [
     {
@@ -67,7 +66,9 @@ import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true,
-    },],
+    },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

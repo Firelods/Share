@@ -74,4 +74,9 @@ export class LoginService {
     localStorage.removeItem('user');
     this.alertService.warning("Vous avez été déconnecté");
   }
+
+  loginWithGoogle() {
+    // go to google login
+    window.location.href = this.requestService.url + "auth/google";
+  }
 }
