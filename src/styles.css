@@ -36,7 +36,8 @@ app-gestion-group {
   display: flex;
 }
 app-recap,
-app-history {
+app-history,
+app-info {
   display: flex;
   width: 100%;
 
@@ -86,7 +87,8 @@ app-history {
     scroll-snap-type: y proximity;
   }
   app-recap,
-  app-history {
+  app-history,
+  app-info {
     justify-content: center;
   }
 }

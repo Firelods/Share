@@ -52,10 +52,10 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    var result = this.registerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.email).subscribe(Auth => {
+    this.registerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.email).subscribe(Auth => {
       console.log(Auth);
       if (Auth == "connected") {
-        var LoginRequest = this.loginService.login(this.registerForm.value.username, this.registerForm.value.password).subscribe(LoginResult => {
+        this.loginService.login(this.registerForm.value.username, this.registerForm.value.password).subscribe(LoginResult => {
           console.log(LoginResult);
           if (LoginResult == "connected") {
             this.router.navigate(['/home']);

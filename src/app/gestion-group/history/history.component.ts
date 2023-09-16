@@ -28,6 +28,9 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit {
       utilisateurConcerned: new FormControl('')
     })
     super.boldNav(null, "history");
+    this.listExpense.sort((a, b) => {
+      return new Date(b.date.toString()).getTime() - new Date(a.date.toString()).getTime();
+    });
   }
 
 
@@ -73,7 +76,11 @@ export class HistoryComponent extends GestionGroupComponent implements OnInit {
           listUsers: this.ExpenseForm.value.utilisateurConcerned,
           date: new Date().toISOString().split('T')[0],
           owner: this.ExpenseForm.value.owner
-        })
+        });
+        // sort by date
+        this.listExpense.sort((a, b) => {
+          return new Date(b.date.toString()).getTime() - new Date(a.date.toString()).getTime();
+        });
       }
 
     })

@@ -1,24 +1,17 @@
 <div class="mainPage">
   <img class="family" src="../../assets/familyGoodTime-cropped.png" alt="" />
   <div id="titreDefilant">
-    <ngx-typed-js
-      [strings]="[
+    <ngx-typed-js [strings]="[
         'Partagez vos dépenses intelligemment !',
         'Profitez intelligemment !',
         'Adoptez $hare !'
-      ]"
-      [loop]="true"
-      [smartBackspace]="true"
-      [showCursor]="false"
-      [backDelay]="1000"
-      [backSpeed]="20"
-      [typeSpeed]="40"
-    >
+      ]" [loop]="true" [smartBackspace]="true" [showCursor]="false" [backDelay]="1000" [backSpeed]="20"
+      [typeSpeed]="40">
       <h1 class="typing"></h1>
     </ngx-typed-js>
   </div>
   <h2>Collocation ? Soirée entre Amis ? Grosse dépense à partager ?</h2>
-  <button id="buttonTry" class="buttonShadow">
+  <button id="buttonTry" routerLink="/login" class="buttonShadow">
     <p>Essayez <span>&nbsp;$hare !</span></p>
   </button>
 </div>

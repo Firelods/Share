@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HistoryComponent } from './gestion-group/history/history.component';
+import { InfoComponent } from './gestion-group/info/info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,10 @@ const routes: Routes = [
     {
       path: 'history',
       component: HistoryComponent, canActivate: [AuthGuard], data: { animation: 'isRight' }
+    },
+    {
+      path: 'infos',
+      component: InfoComponent, canActivate: [AuthGuard], data: { animation: 'isRight' }
     }]
   },
   {

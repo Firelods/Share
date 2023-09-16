@@ -1,39 +1,16 @@
 <div class="scrollSnap">
   <div class="leftPart">
     <!-- <img class="imgGroup" src="../../assets/family.png" alt="family assets" /> -->
-    <svg
-      class="family"
-      width="509"
-      height="382"
-      viewBox="0 0 509 382"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
+    <svg class="family" width="509" height="382" viewBox="0 0 509 382" fill="none" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
       <path
         d="M24.1986 140.556C11.9463 95.3439 5.4364 46.959 5.0212 -2L254.5 -1.99996H503.979C503.564 46.959 497.054 95.344 484.801 140.556C472.131 187.311 453.584 229.699 430.275 265.327C406.963 300.958 379.393 329.061 349.218 348.165C319.063 367.256 286.887 377 254.5 377C222.113 377 189.937 367.256 159.782 348.165C129.607 329.061 102.037 300.958 78.7254 265.327C55.416 229.699 36.8689 187.311 24.1986 140.556Z"
-        fill="url(#pattern0)"
-        stroke="white"
-        stroke-width="10"
-      />
+        fill="url(#pattern0)" stroke="white" stroke-width="10" />
       <defs>
-        <pattern
-          id="pattern0"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use
-            xlink:href="#image0_7_8"
-            transform="translate(0 -0.154242) scale(0.000976562 0.00127782)"
-          />
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0_7_8" transform="translate(0 -0.154242) scale(0.000976562 0.00127782)" />
         </pattern>
-        <image
-          id="image0_7_8"
-          width="1024"
-          height="1024"
-          xlink:href="../../assets/familyGoodTime.png"
-        />
+        <image id="image0_7_8" width="1024" height="1024" xlink:href="../../assets/familyGoodTime.png" />
       </defs>
     </svg>
 
@@ -54,35 +31,23 @@
   </div>
   <div class="rightPart">
     <div class="navGroup">
-      <div
-        class="navGroupElem bold"
-        routerLink="/gestion-group/recap"
-        [queryParams]="{ group: group._id }"
-        (click)="boldNav($event, 'accueil')"
-      >
+      <div class="navGroupElem bold" routerLink="/gestion-group/recap" [queryParams]="{ group: group._id }"
+        (click)="boldNav($event, 'accueil')">
         Accueil
       </div>
-      <div
-        id="history"
-        class="navGroupElem"
-        routerLink="/gestion-group/history"
-        [queryParams]="{ group: group._id }"
-        (click)="boldNav($event, 'accueil')"
-      >
+      <div id="history" class="navGroupElem" routerLink="/gestion-group/history" [queryParams]="{ group: group._id }"
+        (click)="boldNav($event, 'history')">
         Dépenses
       </div>
-      <div class="navGroupElem" (click)="boldNav($event, 'accueil')">Infos</div>
+      <div class="navGroupElem" (click)="boldNav($event, 'infos')" routerLink="/gestion-group/infos"
+        [queryParams]="{ group: group._id }">Infos</div>
       <div class="navGroupElem" (click)="boldNav($event, 'accueil')">
         Options
       </div>
     </div>
-    <div
-      class="divRouter"
-      style="position: relative"
-      [@routeAnimations]="
+    <div class="divRouter" style="position: relative" [@routeAnimations]="
         this.screenWidth <= 800 ? '' : getRouteAnimationData()
-      "
-    >
+      ">
       <app-loader></app-loader>
       <router-outlet></router-outlet>
     </div>

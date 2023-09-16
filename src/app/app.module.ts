@@ -24,6 +24,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
+import { InfoComponent } from './gestion-group/info/info.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatSelect, MatOptionModule, MatSelectModule } from '@angular/material';
     RecapComponent,
     AccountGestionComponent,
     LoaderComponent,
+    InfoComponent,
 
   ],
   imports: [
